@@ -11,8 +11,12 @@ config_version=5
 [application]
 
 config/name="OPTCGSIM"
-run/main_scene="res://board.tscn"
+run/main_scene="res://Scenes/World.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+
+[autoload]
+
+Game="*res://Scripts/Global/Game.gd"
 
 [dotnet]
 
