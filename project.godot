@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 [autoload]
 
 Game="*res://Scripts/Global/Game.gd"
+GlobalAudioStreamPlayer="*res://Scripts/Global/audio_stream_player.tscn"
 
 [dotnet]
 

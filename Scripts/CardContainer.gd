@@ -2,11 +2,8 @@ extends HBoxContainer
 
 
 var startPosition
-var maxCardsAllowed = 6
 
 func _ready():
-	self.size.x = maxCardsAllowed*105
-	self.pivot_offset.x = maxCardsAllowed*52.5
 	var projectResolution = ProjectSettings.get_setting("display/window/size/viewport_width")
 	var projectResolutionHeight = ProjectSettings.get_setting("display/window/size/viewport_height")
 	self.global_position.x = projectResolution/4
