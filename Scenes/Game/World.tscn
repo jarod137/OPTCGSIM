@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://085m0pgrbo2t"]
 
-[ext_resource type="PackedScene" uid="uid://deotsx23pqaeq" path="res://Scenes/card.tscn" id="1_imruo"]
-[ext_resource type="Script" path="res://Scripts/CardContainer.gd" id="1_xeshw"]
-[ext_resource type="Script" path="res://Scripts/CardPlacement.gd" id="3_yxjxn"]
+[ext_resource type="Script" path="res://Scripts/GameScripts/CardContainer.gd" id="1_iofhb"]
+[ext_resource type="PackedScene" uid="uid://deotsx23pqaeq" path="res://Scenes/Game/card.tscn" id="2_6bdqh"]
+[ext_resource type="Script" path="res://Scripts/GameScripts/CardPlacement.gd" id="3_hp3cs"]
 
 [node name="Board" type="Node"]
 
@@ -16,24 +16,24 @@ offset_bottom = -512.0
 grow_vertical = 2
 theme_override_constants/separation = -20
 alignment = 1
-script = ExtResource("1_xeshw")
+script = ExtResource("1_iofhb")
 
-[node name="Card1" parent="UI/CardContainer" instance=ExtResource("1_imruo")]
+[node name="Card1" parent="UI/CardContainer" instance=ExtResource("2_6bdqh")]
 layout_mode = 2
 
-[node name="Card2" parent="UI/CardContainer" instance=ExtResource("1_imruo")]
+[node name="Card2" parent="UI/CardContainer" instance=ExtResource("2_6bdqh")]
 layout_mode = 2
 
-[node name="Card3" parent="UI/CardContainer" instance=ExtResource("1_imruo")]
+[node name="Card3" parent="UI/CardContainer" instance=ExtResource("2_6bdqh")]
 layout_mode = 2
 
-[node name="Card4" parent="UI/CardContainer" instance=ExtResource("1_imruo")]
+[node name="Card4" parent="UI/CardContainer" instance=ExtResource("2_6bdqh")]
 layout_mode = 2
 
-[node name="Card5" parent="UI/CardContainer" instance=ExtResource("1_imruo")]
+[node name="Card5" parent="UI/CardContainer" instance=ExtResource("2_6bdqh")]
 layout_mode = 2
 
-[node name="Card6" parent="UI/CardContainer" instance=ExtResource("1_imruo")]
+[node name="Card6" parent="UI/CardContainer" instance=ExtResource("2_6bdqh")]
 layout_mode = 2
 
 [node name="CardPlacement" type="Control" parent="UI"]
@@ -43,7 +43,7 @@ offset_left = 20.0
 offset_top = 25.0
 offset_right = 1108.0
 offset_bottom = 281.0
-script = ExtResource("3_yxjxn")
+script = ExtResource("3_hp3cs")
 
 [node name="CardHolder" type="Node" parent="."]
 

@@ -2,7 +2,7 @@ extends Control
 
 
 
-@onready var card = preload("res://Scenes/cardonBoard.tscn")
+@onready var card = preload("res://Scenes/Game/cardonBoard.tscn")
 
 func _on_mouse_entered():
 	Game.mouseOnPlacement = true

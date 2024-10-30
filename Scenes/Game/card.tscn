@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://deotsx23pqaeq"]
 
 [ext_resource type="Texture2D" uid="uid://sqh8rsguhuow" path="res://Assets/CardBacks/backcard7.png" id="1_c8syt"]
-[ext_resource type="Script" path="res://Scripts/card.gd" id="1_pef0v"]
+[ext_resource type="Script" path="res://Scripts/GameScripts/card.gd" id="1_pef0v"]
 
 [sub_resource type="Animation" id="Animation_7k3b2"]
 resource_name = "DeSelect"

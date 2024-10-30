@@ -1,7 +1,7 @@
 extends Container
 
 
-@onready var card = preload("res://Scenes/cardHolder.tscn")
+@onready var card = preload("res://Scenes/Game/cardHolder.tscn")
 var startPosition
 var cardHighlighted = false
 
