@@ -11,12 +11,13 @@ config_version=5
 [application]
 
 config/name="OPTCGSIM"
-run/main_scene="res://Scenes/World.tscn"
+run/main_scene="res://Scenes/Menu/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 
 [autoload]
 
 Game="*res://Scripts/Global/Game.gd"
+GlobalAudioStreamPlayer="*res://Scripts/Global/audio_stream_player.tscn"
 
 [dotnet]
 

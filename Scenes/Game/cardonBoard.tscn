@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://vdfatprkvsuo"]
+
+[ext_resource type="Script" path="res://Scripts/GameScripts/cardHolder.gd" id="1_n0chs"]
+[ext_resource type="Texture2D" uid="uid://sqh8rsguhuow" path="res://Assets/CardBacks/backcard7.png" id="2_fgffi"]
+
+[node name="CardHolder" type="Container"]
+custom_minimum_size = Vector2(105, 136)
+offset_right = 105.0
+offset_bottom = 136.0
+script = ExtResource("1_n0chs")
+
+[node name="CardBacks" type="Sprite2D" parent="."]
+scale = Vector2(0.0906801, 0.0944742)
+texture = ExtResource("2_fgffi")
+centered = false

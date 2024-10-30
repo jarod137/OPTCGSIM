@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdrr7xm74nys8"]
+
+[ext_resource type="AudioStream" uid="uid://ca43unr0l6hbu" path="res://Assets/Music/Binks' Sake (One Piece Lofi).wav" id="1_0r2s1"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_0r2s1")
+volume_db = -3.88
+autoplay = true
+mix_target = 1
