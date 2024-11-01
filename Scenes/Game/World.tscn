@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://085m0pgrbo2t"]
+[gd_scene load_steps=5 format=3 uid="uid://085m0pgrbo2t"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardContainer.gd" id="1_iofhb"]
 [ext_resource type="PackedScene" uid="uid://deotsx23pqaeq" path="res://Scenes/Game/card.tscn" id="2_6bdqh"]
+[ext_resource type="Texture2D" uid="uid://iir84nulragi" path="res://Assets/CardBacks/backcard3.png" id="3_3cng0"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardPlacement.gd" id="3_hp3cs"]
 
 [node name="Board" type="Node"]
@@ -35,6 +36,14 @@ layout_mode = 2
 
 [node name="Card6" parent="UI/CardContainer" instance=ExtResource("2_6bdqh")]
 layout_mode = 2
+
+[node name="Card7" parent="UI/CardContainer" instance=ExtResource("2_6bdqh")]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/CardContainer"]
+position = Vector2(796, -268)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_3cng0")
 
 [node name="CardPlacement" type="Control" parent="UI"]
 layout_mode = 3
