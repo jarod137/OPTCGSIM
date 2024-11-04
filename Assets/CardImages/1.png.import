@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sqh8rsguhuow"
-path.s3tc="res://.godot/imported/backcard7.png-28fb9631bc37c721397f3e4d86c66592.s3tc.ctex"
+uid="uid://c32rpuxl0epcn"
+path.s3tc="res://.godot/imported/1.png-3b98061bd873cbe291669c650055271b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/CardBacks/backcard7.png"
-dest_files=["res://.godot/imported/backcard7.png-28fb9631bc37c721397f3e4d86c66592.s3tc.ctex"]
+source_file="res://Assets/CardImages/1.png"
+dest_files=["res://.godot/imported/1.png-3b98061bd873cbe291669c650055271b.s3tc.ctex"]
 
 [params]
 

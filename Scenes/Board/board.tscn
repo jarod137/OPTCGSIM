@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://qhdx7tj4vrx3"]
+
+[ext_resource type="Script" path="res://Scenes/Board/board.gd" id="1_0pltx"]
+[ext_resource type="Script" path="res://addons/card_3d/scripts/card_3d.gd" id="1_nkn14"]
+[ext_resource type="PackedScene" uid="uid://b8o6mrdhvviht" path="res://Scenes/Board/card_3d.tscn" id="3_gkkcb"]
+
+[node name="Board" type="Node3D"]
+script = ExtResource("1_0pltx")
+
+[node name="Player1" type="Node3D" parent="."]
+
+[node name="HandZone" type="Node3D" parent="Player1"]
+script = ExtResource("1_nkn14")
+
+[node name="DeckZone" type="Node3D" parent="Player1"]
+script = ExtResource("1_nkn14")
+
+[node name="TrashZone" type="Node3D" parent="Player1"]
+script = ExtResource("1_nkn14")
+
+[node name="CharacterZone" type="Node3D" parent="Player1"]
+script = ExtResource("1_nkn14")
+
+[node name="LifeZone" type="Node3D" parent="Player1"]
+script = ExtResource("1_nkn14")
+
+[node name="LeaderZone" type="Node3D" parent="Player1"]
+script = ExtResource("1_nkn14")
+
+[node name="DonDeckZone" type="Node3D" parent="Player1"]
+script = ExtResource("1_nkn14")
+
+[node name="DonZone" type="Node3D" parent="Player1"]
+script = ExtResource("1_nkn14")
+
+[node name="Player2" type="Node3D" parent="."]
+
+[node name="HandZone" type="Node3D" parent="Player2"]
+script = ExtResource("1_nkn14")
+
+[node name="DeckZone" type="Node3D" parent="Player2"]
+script = ExtResource("1_nkn14")
+
+[node name="TrashZone" type="Node3D" parent="Player2"]
+script = ExtResource("1_nkn14")
+
+[node name="CharacterZone" type="Node3D" parent="Player2"]
+script = ExtResource("1_nkn14")
+
+[node name="LifeZone" type="Node3D" parent="Player2"]
+script = ExtResource("1_nkn14")
+
+[node name="LeaderZone" type="Node3D" parent="Player2"]
+script = ExtResource("1_nkn14")
+
+[node name="DonDeckZone" type="Node3D" parent="Player2"]
+script = ExtResource("1_nkn14")
+
+[node name="DonZone" type="Node3D" parent="Player2"]
+script = ExtResource("1_nkn14")
+
+[node name="Center" type="Node3D" parent="."]
+
+[node name="Card3D" parent="." instance=ExtResource("3_gkkcb")]
+transform = Transform3D(0.761685, 0, 0.647947, 0, 1, 0, -0.647947, 0, 0.761685, -1.42, -0.188314, -0.0413229)
+
+[node name="Card3D2" parent="." instance=ExtResource("3_gkkcb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.134087, -5.96046e-08, -0.359657)
+
+[node name="Card3D3" parent="." instance=ExtResource("3_gkkcb")]
+transform = Transform3D(0.161156, 0, -0.986929, -0.124054, -0.992069, -0.0202568, -0.979101, 0.125697, -0.159878, -1.85848, 0, 0.871349)

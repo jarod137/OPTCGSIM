@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://cklsrsty1xv8d"]
+
+[ext_resource type="Script" path="res://Scenes/DeckBuilder/GlobalCard.gd" id="1_b5nvh"]
+[ext_resource type="Script" path="res://Scripts/DeckBuilderScripts/DeckBuilder.gd" id="2_662or"]
+[ext_resource type="PackedScene" uid="uid://bip1wo3v0bmon" path="res://Scenes/DeckBuilder/DeckBuildContainer.tscn" id="3_2xl6w"]
+
+[node name="DeckBuilding" type="Node"]
+script = ExtResource("1_b5nvh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 10
+script = ExtResource("2_662or")
+
+[node name="Container" parent="CanvasLayer/GridContainer" instance=ExtResource("3_2xl6w")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -68.0
+offset_top = -39.0
+offset_right = 68.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 4
+text = "Next page"
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Back"
+
+[connection signal="mouse_entered" from="CanvasLayer/GridContainer" to="CanvasLayer/GridContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/GridContainer" to="CanvasLayer/GridContainer" method="_on_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/GridContainer" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button2" to="CanvasLayer/GridContainer" method="_on_button_2_pressed"]
