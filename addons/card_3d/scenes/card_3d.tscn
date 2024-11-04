@@ -1,14 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxpc2iac0hjpw"]
+[gd_scene load_steps=9 format=3 uid="uid://dxpc2iac0hjpw"]
 
 [ext_resource type="Script" path="res://addons/card_3d/scripts/card_3d.gd" id="1_ll0aq"]
-[ext_resource type="Texture2D" uid="uid://b6bp4el47n1f6" path="res://example/assets/card_back.png" id="2_upnc6"]
+[ext_resource type="Texture2D" uid="uid://sqh8rsguhuow" path="res://Assets/CardBacks/backcard7.png" id="2_n7h6b"]
 [ext_resource type="Material" uid="uid://h7vdysdtgmgu" path="res://example/materials/club-14.tres" id="3_7keew"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_a5dw2"]
 size = Vector2(2.5, 3.5)
 
+[sub_resource type="Skin" id="Skin_04p6p"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k64yj"]
-albedo_texture = ExtResource("2_upnc6")
+albedo_texture = ExtResource("2_n7h6b")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_o3bng"]
 size = Vector2(2.5, 3.5)
@@ -24,6 +26,7 @@ script = ExtResource("1_ll0aq")
 [node name="CardBackMesh" type="MeshInstance3D" parent="CardMesh"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("PlaneMesh_a5dw2")
+skin = SubResource("Skin_04p6p")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_k64yj")
 
