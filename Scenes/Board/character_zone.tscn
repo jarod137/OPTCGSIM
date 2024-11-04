@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwlvoqm5hc8uj"]
+
+[ext_resource type="Script" path="res://addons/card_3d/scripts/card_3d.gd" id="1_lw44p"]
+
+[node name="CharacterZone" type="Node3D"]
+script = ExtResource("1_lw44p")

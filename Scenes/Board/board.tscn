@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://qhdx7tj4vrx3"]
+
+[ext_resource type="Script" path="res://Scenes/Board/board.gd" id="1_0pltx"]
+[ext_resource type="Script" path="res://addons/card_3d/scripts/card_3d.gd" id="1_nkn14"]
+
+[node name="Board" type="Node3D"]
+script = ExtResource("1_0pltx")
+
+[node name="Player1" type="Node3D" parent="."]
+
+[node name="HandZone" type="Node3D" parent="Player1"]
+script = ExtResource("1_nkn14")
+
+[node name="DeckZone" type="Node3D" parent="Player1"]
+script = ExtResource("1_nkn14")
+
+[node name="TrashZone" type="Node3D" parent="Player1"]
+script = ExtResource("1_nkn14")
+
+[node name="CharacterZone" type="Node3D" parent="Player1"]
+script = ExtResource("1_nkn14")
+
+[node name="LifeZone" type="Node3D" parent="Player1"]
+script = ExtResource("1_nkn14")
+
+[node name="LeaderZone" type="Node3D" parent="Player1"]
+script = ExtResource("1_nkn14")
+
+[node name="DonDeckZone" type="Node3D" parent="Player1"]
+script = ExtResource("1_nkn14")
+
+[node name="DonZone" type="Node3D" parent="Player1"]
+script = ExtResource("1_nkn14")
+
+[node name="Player2" type="Node3D" parent="."]
+
+[node name="HandZone" type="Node3D" parent="Player2"]
+script = ExtResource("1_nkn14")
+
+[node name="DeckZone" type="Node3D" parent="Player2"]
+script = ExtResource("1_nkn14")
+
+[node name="TrashZone" type="Node3D" parent="Player2"]
+script = ExtResource("1_nkn14")
+
+[node name="CharacterZone" type="Node3D" parent="Player2"]
+script = ExtResource("1_nkn14")
+
+[node name="LifeZone" type="Node3D" parent="Player2"]
+script = ExtResource("1_nkn14")
+
+[node name="LeaderZone" type="Node3D" parent="Player2"]
+script = ExtResource("1_nkn14")
+
+[node name="DonDeckZone" type="Node3D" parent="Player2"]
+script = ExtResource("1_nkn14")
+
+[node name="DonZone" type="Node3D" parent="Player2"]
+script = ExtResource("1_nkn14")
+
+[node name="Center" type="Node3D" parent="."]

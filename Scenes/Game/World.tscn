@@ -12,8 +12,10 @@
 [node name="CardContainer" type="HBoxContainer" parent="UI"]
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 530.0
-offset_bottom = -512.0
+offset_left = 240.0
+offset_top = 507.0
+offset_right = 855.0
+offset_bottom = -5.0
 grow_vertical = 2
 theme_override_constants/separation = -20
 alignment = 1
@@ -48,10 +50,10 @@ texture = ExtResource("3_3cng0")
 [node name="CardPlacement" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 20.0
-offset_top = 25.0
-offset_right = 1108.0
-offset_bottom = 281.0
+offset_left = 25.0
+offset_top = 40.0
+offset_right = 1113.0
+offset_bottom = 296.0
 script = ExtResource("3_hp3cs")
 
 [node name="CardHolder" type="Node" parent="."]
