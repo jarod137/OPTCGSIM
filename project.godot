@@ -12,7 +12,7 @@ config_version=5
 
 config/name="OPTCGSIM"
 run/main_scene="res://Scenes/Menu/menu.tscn"
-config/features=PackedStringArray("4.2", "Forward Plus")
+config/features=PackedStringArray("4.3", "Forward Plus")
 
 [autoload]
 
