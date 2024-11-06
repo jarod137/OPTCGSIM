@@ -5,7 +5,7 @@ var path = "res://Assets/CardData/data.json"
 var card_data = []
 
 var current_page = 0
-var cards_per_page = 25
+var cards_per_page = 12
 
 func _ready():
 	load_card_data()
@@ -33,7 +33,7 @@ func load_card_data():
 		print("Error: JSON file not found")
 		
 		
-func populate_UI(min_index: int = 0, max_index: int = 25):
+func populate_UI(min_index: int = 0, max_index: int = 12):
 	var deckBuilderScene = preload("res://Scenes/DeckBuilder/DeckBuilding.tscn")
 	var cardScene = preload("res://Scenes/DeckBuilder/DeckBuildContainer.tscn")
 	
@@ -62,14 +62,23 @@ func populate_UI(min_index: int = 0, max_index: int = 25):
 			if img_path != "":
 				var texture = load(img_path) as Texture2D
 				sprite_node.texture = texture
+
+		var button_node = card_instance.get_node_or_null("Button")
+		
+		if button_node:
+			button_node.pressed.connect(_on_card_pressed.bind(card_instance))
+		else:
+			print("Error: btn not found")
 		
 		grid_container.add_child(card_instance)
 		
 	add_child(deck_instance)
+	
+func _on_card_pressed(card_instance):
+	print("Button clicked for ", card_instance)
 
 func _on_mouse_entered():
 	pass # Replace with function body.
-
 
 func _on_mouse_exited():
 	pass # Replace with function body.
