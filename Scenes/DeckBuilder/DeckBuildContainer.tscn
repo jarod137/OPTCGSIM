@@ -1,14 +1,29 @@
-[gd_scene format=3 uid="uid://bip1wo3v0bmon"]
+[gd_scene load_steps=2 format=3 uid="uid://bip1wo3v0bmon"]
+
+[ext_resource type="Script" path="res://Scripts/DeckBuilderScripts/DeckBuilder.gd" id="1_qqm5r"]
 
 [node name="Container" type="Container"]
-anchors_preset = 8
+anchors_preset = 13
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("1_qqm5r")
 
 [node name="cardImages" type="Sprite2D" parent="."]
+scale = Vector2(0.95, 0.95)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 15
+size_flags_vertical = 3
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_card_pressed"]

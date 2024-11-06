@@ -65,7 +65,7 @@ script = ExtResource("1_pef0v")
 
 [node name="CardBacks" type="Sprite2D" parent="."]
 position = Vector2(52, 67)
-scale = Vector2(0.131612, 0.124332)
+scale = Vector2(0.02, 0.02)
 texture = ExtResource("1_c8syt")
 
 [node name="Anim" type="AnimationPlayer" parent="."]
