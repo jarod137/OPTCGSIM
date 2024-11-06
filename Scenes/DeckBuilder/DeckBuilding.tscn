@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cklsrsty1xv8d"]
 
-[ext_resource type="Script" path="res://Scenes/DeckBuilder/GlobalCard.gd" id="1_b5nvh"]
+[ext_resource type="Script" path="res://Scripts/DeckBuilderScripts/Gamer.gd" id="1_b5nvh"]
 [ext_resource type="Script" path="res://Scripts/DeckBuilderScripts/DeckBuilder.gd" id="2_662or"]
 [ext_resource type="PackedScene" uid="uid://bip1wo3v0bmon" path="res://Scenes/DeckBuilder/DeckBuildContainer.tscn" id="3_2xl6w"]
 

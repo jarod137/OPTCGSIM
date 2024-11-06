@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://deotsx23pqaeq"]
 
 [ext_resource type="Texture2D" uid="uid://sqh8rsguhuow" path="res://Assets/CardBacks/backcard7.png" id="1_c8syt"]
-[ext_resource type="Script" path="res://Scripts/GameScripts/card.gd" id="1_pef0v"]
+[ext_resource type="Script" path="res://Scripts/GameScripts/Card.gd" id="1_pef0v"]
 
 [sub_resource type="Animation" id="Animation_7k3b2"]
 resource_name = "DeSelect"
@@ -16,7 +16,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(54, 24), Vector2(54, 68)]
+"values": [Vector2(52, 20), Vector2(52, 67)]
 }
 
 [sub_resource type="Animation" id="Animation_7wupx"]
@@ -47,7 +47,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(54, 68), Vector2(54, 24)]
+"values": [Vector2(52, 67), Vector2(52, 20)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_blu37"]
@@ -65,7 +65,7 @@ script = ExtResource("1_pef0v")
 
 [node name="CardBacks" type="Sprite2D" parent="."]
 position = Vector2(52, 67)
-scale = Vector2(0.210327, 0.209447)
+scale = Vector2(0.131612, 0.124332)
 texture = ExtResource("1_c8syt")
 
 [node name="Anim" type="AnimationPlayer" parent="."]

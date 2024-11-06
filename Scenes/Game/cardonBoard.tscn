@@ -1,15 +1,74 @@
-[gd_scene load_steps=3 format=3 uid="uid://vdfatprkvsuo"]
+[gd_scene load_steps=7 format=3 uid="uid://d3e05ns85uk4n"]
 
-[ext_resource type="Script" path="res://Scripts/GameScripts/cardHolder.gd" id="1_n0chs"]
-[ext_resource type="Texture2D" uid="uid://sqh8rsguhuow" path="res://Assets/CardBacks/backcard7.png" id="2_fgffi"]
+[ext_resource type="Script" path="res://Scripts/GameScripts/cardonBoard.gd" id="1_cn8kd"]
+[ext_resource type="Texture2D" uid="uid://sqh8rsguhuow" path="res://Assets/CardBacks/backcard7.png" id="2_5px4p"]
 
-[node name="CardHolder" type="Container"]
+[sub_resource type="Animation" id="Animation_7k3b2"]
+resource_name = "DeSelect"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardBacks:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(52, 20), Vector2(52, 67)]
+}
+
+[sub_resource type="Animation" id="Animation_7wupx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardBacks:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(52, 67)]
+}
+
+[sub_resource type="Animation" id="Animation_0gtgv"]
+resource_name = "Select"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardBacks:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(52, 67), Vector2(52, 20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_blu37"]
+_data = {
+"DeSelect": SubResource("Animation_7k3b2"),
+"RESET": SubResource("Animation_7wupx"),
+"Select": SubResource("Animation_0gtgv")
+}
+
+[node name="CardonBoard" type="Container"]
 custom_minimum_size = Vector2(105, 136)
 offset_right = 105.0
 offset_bottom = 136.0
-script = ExtResource("1_n0chs")
+script = ExtResource("1_cn8kd")
 
 [node name="CardBacks" type="Sprite2D" parent="."]
-scale = Vector2(0.0906801, 0.0944742)
-texture = ExtResource("2_fgffi")
-centered = false
+position = Vector2(52, 67)
+scale = Vector2(0.134761, 0.122103)
+texture = ExtResource("2_5px4p")
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_blu37")
+}

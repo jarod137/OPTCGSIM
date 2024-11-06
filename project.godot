@@ -21,7 +21,7 @@ GlobalAudioStreamPlayer="*res://Scripts/Global/audio_stream_player.tscn"
 
 [display]
 
-window/size/mode=3
+window/size/resizable=false
 window/size/borderless=true
 
 [dotnet]
