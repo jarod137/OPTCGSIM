@@ -47,6 +47,12 @@ offset_right = 1030.0
 offset_bottom = 194.0
 script = ExtResource("3_yxjxn")
 
+[node name="Deck" type="HBoxContainer" parent="UI"]
+offset_left = 1041.0
+offset_top = 508.0
+offset_right = 1148.0
+offset_bottom = 648.0
+
 [node name="CardHolder" type="Node" parent="."]
 
 [node name="Button" type="Button" parent="."]
