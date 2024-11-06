@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://085m0pgrbo2t"]
+[gd_scene load_steps=6 format=3 uid="uid://085m0pgrbo2t"]
 
+[ext_resource type="Script" path="res://Scenes/Game/world.gd" id="1_gjowp"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardContainer.gd" id="1_iofhb"]
 [ext_resource type="PackedScene" uid="uid://deotsx23pqaeq" path="res://Scenes/Game/card.tscn" id="2_6bdqh"]
 [ext_resource type="Texture2D" uid="uid://iir84nulragi" path="res://Assets/CardBacks/backcard3.png" id="3_3cng0"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardPlacement.gd" id="3_hp3cs"]
 
 [node name="Board" type="Node"]
+script = ExtResource("1_gjowp")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -50,15 +52,21 @@ texture = ExtResource("3_3cng0")
 [node name="CardPlacement" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 25.0
-offset_top = 40.0
-offset_right = 1113.0
-offset_bottom = 296.0
+offset_left = 332.0
+offset_top = 45.0
+offset_right = 871.0
+offset_bottom = 301.0
 script = ExtResource("3_hp3cs")
 
 [node name="CardHolder" type="Node" parent="."]
+
+[node name="back" type="Button" parent="."]
+offset_right = 280.0
+offset_bottom = 124.0
+text = "Back"
 
 [connection signal="mouse_entered" from="UI/CardContainer" to="UI/CardContainer" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/CardContainer" to="UI/CardContainer" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="UI/CardPlacement" to="UI/CardPlacement" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/CardPlacement" to="UI/CardPlacement" method="_on_mouse_exited"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]
