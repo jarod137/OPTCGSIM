@@ -53,6 +53,12 @@ offset_top = 508.0
 offset_right = 1148.0
 offset_bottom = 648.0
 
+[node name="LifeZone" type="HBoxContainer" parent="UI"]
+offset_left = 25.0
+offset_top = 152.0
+offset_right = 166.0
+offset_bottom = 472.0
+
 [node name="CardHolder" type="Node" parent="."]
 
 [node name="Button" type="Button" parent="."]
