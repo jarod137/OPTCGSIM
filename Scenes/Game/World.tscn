@@ -37,40 +37,84 @@ layout_mode = 2
 [node name="Card5" parent="UI/Hand" instance=ExtResource("1_imruo")]
 layout_mode = 2
 
-[node name="Card6" parent="UI/Hand" instance=ExtResource("1_imruo")]
-layout_mode = 2
-
 [node name="CardPlacement" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 90.0
+offset_left = 186.0
 offset_top = 24.0
-offset_right = 984.0
+offset_right = 1080.0
 offset_bottom = 164.0
 script = ExtResource("3_yxjxn")
 
 [node name="Deck" type="HBoxContainer" parent="UI"]
-offset_left = 1041.0
-offset_top = 508.0
-offset_right = 1148.0
-offset_bottom = 648.0
+offset_left = 1030.0
+offset_top = 355.0
+offset_right = 1137.0
+offset_bottom = 495.0
+
+[node name="LeaderZone" type="HBoxContainer" parent="UI"]
+offset_left = 724.0
+offset_top = 160.0
+offset_right = 831.0
+offset_bottom = 300.0
+
+[node name="TrashZone" type="HBoxContainer" parent="UI"]
+offset_left = 1033.0
+offset_top = 165.0
+offset_right = 1140.0
+offset_bottom = 305.0
+
+[node name="StageZone" type="HBoxContainer" parent="UI"]
+offset_left = 852.0
+offset_top = 166.0
+offset_right = 959.0
+offset_bottom = 306.0
+
+[node name="DonZone" type="HBoxContainer" parent="UI"]
+offset_left = 198.0
+offset_top = 339.0
+offset_right = 953.0
+offset_bottom = 479.0
+
+[node name="DonDeck" type="HBoxContainer" parent="UI"]
+offset_left = 30.0
+offset_top = 343.0
+offset_right = 145.0
+offset_bottom = 483.0
 
 [node name="LifeZone" type="HBoxContainer" parent="UI"]
-offset_left = 25.0
-offset_top = 152.0
-offset_right = 166.0
-offset_bottom = 472.0
+offset_left = 22.0
+offset_top = 22.0
+offset_right = 163.0
+offset_bottom = 342.0
 
 [node name="CardHolder" type="Node" parent="."]
 
-[node name="Button" type="Button" parent="."]
+[node name="back" type="Button" parent="."]
 offset_top = 612.0
 offset_right = 45.0
 offset_bottom = 648.0
 text = "back"
 
+[node name="EndTurnButton" type="Button" parent="."]
+offset_left = 1015.0
+offset_top = 572.0
+offset_right = 1149.0
+offset_bottom = 648.0
+text = "End Turn"
+
+[node name="StartTurnButton" type="Button" parent="."]
+offset_left = 1016.0
+offset_top = 493.0
+offset_right = 1150.0
+offset_bottom = 569.0
+text = "StartTurn
+"
+
 [connection signal="mouse_entered" from="UI/Hand" to="UI/Hand" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/Hand" to="UI/Hand" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="UI/CardPlacement" to="UI/CardPlacement" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/CardPlacement" to="UI/CardPlacement" method="_on_mouse_exited"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="EndTurnButton" to="." method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="StartTurnButton" to="." method="_on_start_turn_button_pressed"]

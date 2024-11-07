@@ -14,6 +14,10 @@ config/name="OPTCGSIM"
 run/main_scene="res://Scenes/Menu/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 
+[audio]
+
+buses/default_bus_layout="res://Scenes/Options/default_bus_layout.tres"
+
 [autoload]
 
 Game="*res://Scripts/Global/Game.gd"

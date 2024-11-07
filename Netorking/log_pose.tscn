@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dakr81mbjkjqo"]
+
+[ext_resource type="Script" path="res://Netorking/log_pose.gd" id="1_8excb"]
+
+[node name="LogPose" type="Node"]
+script = ExtResource("1_8excb")

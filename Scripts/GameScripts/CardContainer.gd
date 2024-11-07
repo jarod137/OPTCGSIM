@@ -2,7 +2,7 @@ extends HBoxContainer
 
 
 var startPosition
-var maxCardsAllowed = 6
+var maxCardsAllowed = 5
 
 func _ready():
 	self.size.x = maxCardsAllowed*105
