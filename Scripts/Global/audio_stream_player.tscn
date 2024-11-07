@@ -7,3 +7,4 @@ stream = ExtResource("1_0r2s1")
 volume_db = -3.88
 autoplay = true
 mix_target = 1
+bus = &"music"

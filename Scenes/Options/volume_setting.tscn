@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq25s8crijra0"]
+
+[ext_resource type="PackedScene" uid="uid://dut33q0pj48dr" path="res://Scenes/Options/h_slider.tscn" id="1_bnd44"]
+[ext_resource type="Script" path="res://Scenes/Options/volume_setting.gd" id="1_jfjvr"]
+
+[node name="VolumeSetting" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = 1.0
+offset_right = -11.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jfjvr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 214.0
+offset_right = 632.0
+offset_bottom = 439.0
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="master_label" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="master" parent="HBoxContainer/PanelContainer/VBoxContainer" instance=ExtResource("1_bnd44")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="music_label" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="music" parent="HBoxContainer/PanelContainer/VBoxContainer" instance=ExtResource("1_bnd44")]
+layout_mode = 2
+bus_name = "music"
+
+[node name="sfx_label" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="sfx" parent="HBoxContainer/PanelContainer/VBoxContainer" instance=ExtResource("1_bnd44")]
+layout_mode = 2
+bus_name = "sfx"
+
+[node name="Button" type="Button" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="HBoxContainer/PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

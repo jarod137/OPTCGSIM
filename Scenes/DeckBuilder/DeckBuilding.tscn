@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cklsrsty1xv8d"]
 
-[ext_resource type="Script" path="res://Scenes/DeckBuilder/GlobalCard.gd" id="1_b5nvh"]
+[ext_resource type="Script" path="res://Scripts/DeckBuilderScripts/Gamer.gd" id="1_b5nvh"]
 [ext_resource type="Script" path="res://Scripts/DeckBuilderScripts/DeckBuilder.gd" id="2_662or"]
 
 [node name="DeckBuilding" type="Control"]
