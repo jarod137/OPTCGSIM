@@ -19,11 +19,6 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 Game="*res://Scripts/Global/Game.gd"
 GlobalAudioStreamPlayer="*res://Scripts/Global/audio_stream_player.tscn"
 
-[display]
-
-window/size/resizable=false
-window/size/borderless=true
-
 [dotnet]
 
 project/assembly_name="New Game Project"
