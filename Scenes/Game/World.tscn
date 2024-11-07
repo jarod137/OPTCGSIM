@@ -10,41 +10,43 @@ script = ExtResource("1_0xtuj")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="CardContainer" type="HBoxContainer" parent="UI"]
+[node name="Hand" type="HBoxContainer" parent="UI"]
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 530.0
-offset_bottom = -512.0
+offset_left = 241.0
+offset_top = 513.0
+offset_right = 771.0
+offset_bottom = 1.0
 grow_vertical = 2
 theme_override_constants/separation = -20
 alignment = 1
 script = ExtResource("1_xeshw")
 
-[node name="Card1" parent="UI/CardContainer" instance=ExtResource("1_imruo")]
+[node name="Card1" parent="UI/Hand" instance=ExtResource("1_imruo")]
 layout_mode = 2
 
-[node name="Card2" parent="UI/CardContainer" instance=ExtResource("1_imruo")]
+[node name="Card2" parent="UI/Hand" instance=ExtResource("1_imruo")]
 layout_mode = 2
 
-[node name="Card3" parent="UI/CardContainer" instance=ExtResource("1_imruo")]
+[node name="Card3" parent="UI/Hand" instance=ExtResource("1_imruo")]
 layout_mode = 2
 
-[node name="Card4" parent="UI/CardContainer" instance=ExtResource("1_imruo")]
+[node name="Card4" parent="UI/Hand" instance=ExtResource("1_imruo")]
 layout_mode = 2
 
-[node name="Card5" parent="UI/CardContainer" instance=ExtResource("1_imruo")]
+[node name="Card5" parent="UI/Hand" instance=ExtResource("1_imruo")]
 layout_mode = 2
 
-[node name="Card6" parent="UI/CardContainer" instance=ExtResource("1_imruo")]
+[node name="Card6" parent="UI/Hand" instance=ExtResource("1_imruo")]
 layout_mode = 2
 
 [node name="CardPlacement" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 136.0
-offset_top = 54.0
-offset_right = 1030.0
-offset_bottom = 194.0
+offset_left = 90.0
+offset_top = 24.0
+offset_right = 984.0
+offset_bottom = 164.0
 script = ExtResource("3_yxjxn")
 
 [node name="Deck" type="HBoxContainer" parent="UI"]
@@ -67,8 +69,8 @@ offset_right = 45.0
 offset_bottom = 648.0
 text = "back"
 
-[connection signal="mouse_entered" from="UI/CardContainer" to="UI/CardContainer" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/CardContainer" to="UI/CardContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="UI/Hand" to="UI/Hand" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/Hand" to="UI/Hand" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="UI/CardPlacement" to="UI/CardPlacement" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/CardPlacement" to="UI/CardPlacement" method="_on_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

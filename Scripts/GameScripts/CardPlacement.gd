@@ -1,7 +1,7 @@
 extends Control
 
 
-
+var count: int
 @onready var card = preload("res://Scenes/Game/cardonBoard.tscn")
 
 func _on_mouse_entered():
@@ -17,5 +17,7 @@ func placeCard():
 	var cardTemp = card.instantiate()
 	var projectResolution = ProjectSettings.get_setting("display/window/size/viewport_width")
 	var projectResolutionHeight = ProjectSettings.get_setting("display/window/size/viewport_height")
-	cardTemp.global_position = Vector2(projectResolution/2, projectResolutionHeight/2) - self.position*2
+	#add an if card is character, event, or stage here
+	count += 120
+	cardTemp.global_position = Vector2(projectResolution/4 + count, projectResolutionHeight/2 - 200) - self.position*2
 	add_child(cardTemp)
