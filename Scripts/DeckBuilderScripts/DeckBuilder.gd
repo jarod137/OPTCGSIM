@@ -7,6 +7,13 @@ var card_data = []
 var current_page = 0
 var cards_per_page = 12
 
+var deck = []
+
+# Change this to load if the scene is showing as corrupted
+var deckBuilderScene = preload("res://Scenes/DeckBuilder/DeckBuilding.tscn")
+var cardScene = preload("res://Scenes/DeckBuilder/DeckBuildContainer.tscn")
+var deck_instance = deckBuilderScene.instantiate()
+
 func _ready():
 	load_card_data()
 	populate_UI()
@@ -34,11 +41,6 @@ func load_card_data():
 		
 		
 func populate_UI(min_index: int = 0, max_index: int = 12):
-	var deckBuilderScene = preload("res://Scenes/DeckBuilder/DeckBuilding.tscn")
-	var cardScene = preload("res://Scenes/DeckBuilder/DeckBuildContainer.tscn")
-	
-	var deck_instance = deckBuilderScene.instantiate()
-	
 	var canvas_layer = deck_instance.get_node_or_null("CanvasLayer")
 	if not canvas_layer:
 		print("Error: CanvasLayer not found")
@@ -55,34 +57,63 @@ func populate_UI(min_index: int = 0, max_index: int = 12):
 	for i in range(min_index, min(max_index, card_data.size())):
 		var card_info = card_data[i]
 		var card_instance = cardScene.instantiate()
-		
-		var sprite_node = card_instance.get_node("cardImages")
-		if sprite_node:
+				
+		var btn_node = card_instance.get_node("TextureButton")
+		if btn_node:
 			var img_path = card_info.get("imgPath", "")
 			if img_path != "":
 				var texture = load(img_path) as Texture2D
-				sprite_node.texture = texture
-
-		var button_node = card_instance.get_node_or_null("Button")
-		
-		if button_node:
-			button_node.pressed.connect(_on_card_pressed.bind(card_instance))
-		else:
-			print("Error: btn not found")
-		
+				btn_node.texture_normal = texture
+			
+		btn_node.pressed.connect(_on_texture_button_pressed.bind(card_info, card_instance))	
 		grid_container.add_child(card_instance)
 		
 	add_child(deck_instance)
-	
-func _on_card_pressed(card_instance):
-	print("Button clicked for ", card_instance)
 
 func _on_mouse_entered():
 	pass # Replace with function body.
 
 func _on_mouse_exited():
 	pass # Replace with function body.
+	
+func _on_texture_button_pressed(info, instance):
+	print("Button pressed for: ", info["name"])
+	deck.append(info)
+	add_to_deck(info)
+	
+func add_to_deck(info):
+	var canvas_layer = deck_instance.get_node_or_null("CanvasLayer")
+	if not canvas_layer:
+		print("Error: CanvasLayer not found")
+		return
+		
+	var scroll_node = canvas_layer.get_node_or_null("ScrollContainer")
+	if not scroll_node:
+		print("Error: scroll_node not found")
+		return
+		
+	var deck_container = scroll_node.get_node_or_null("DeckContainer")
+	if not deck_container:
+		print("Error: deck_container not found")
+		return
+		
+	var card_instance = cardScene.instantiate()
+	
+	var btn_node = card_instance.get_node("TextureButton")
+	if btn_node:
+		var img_path = info.get("imgPath", "")
+		if img_path != "":
+			var texture = load(img_path) as Texture2D
+			btn_node.texture_normal = texture
+			
+	deck_container.add_child(card_instance)
+	
+func _on_texture_button_mouse_entered():
+	pass # Replace with function body.
 
+func _on_texture_button_mouse_exited():
+	pass # Replace with function body.
+	
 # Next page button hit
 func _on_button_pressed():
 	current_page += 1
@@ -90,6 +121,10 @@ func _on_button_pressed():
 	var max_index = min_index + cards_per_page
 	populate_UI(min_index, max_index)
 
-
 func _on_button_2_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Menu/menu.tscn")
+
+
+
+
+
