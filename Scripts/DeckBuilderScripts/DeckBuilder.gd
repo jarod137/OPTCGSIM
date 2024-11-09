@@ -9,18 +9,32 @@ var cards_per_page = 12
 
 var deck = []
 
+var draftDeck = Player_Deck.new()
+
+enum cardTypes {
+	CHARACTER,
+	LEADER,
+	EVENT,
+	STAGE,
+	ALL
+}
+
 # Change this to load if the scene is showing as corrupted
 var deckBuilderScene = preload("res://Scenes/DeckBuilder/DeckBuilding.tscn")
 var cardScene = preload("res://Scenes/DeckBuilder/DeckBuildContainer.tscn")
 var deck_instance = deckBuilderScene.instantiate()
 
+var currentOption = cardTypes.ALL
+
 func _ready():
 	load_card_data()
 	populate_UI()
+	
 
 func _process(delta):
 	pass
-	
+
+# Could probably be moved to Deck.gd
 func load_card_data():
 	var fileExists = FileAccess.file_exists(path)
 	
@@ -57,6 +71,9 @@ func populate_UI(min_index: int = 0, max_index: int = 12):
 	for i in range(min_index, min(max_index, card_data.size())):
 		var card_info = card_data[i]
 		var card_instance = cardScene.instantiate()
+		
+		if card_info["info"] == str(currentOption):
+			pass
 				
 		var btn_node = card_instance.get_node("TextureButton")
 		if btn_node:
@@ -76,12 +93,30 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	pass # Replace with function body.
 	
-func _on_texture_button_pressed(info, instance):
+# TODO: needs to be tested
+func _on_texture_button_pressed(info, instance) -> void:
 	print("Button pressed for: ", info["name"])
 	deck.append(info)
-	add_to_deck(info)
 	
-func add_to_deck(info):
+	# TODO: testing needed
+	if info["info"] == "LEADER":
+		if draftDeck.has_leader():
+			print("Leader already picked")
+			return
+		else:
+			draftDeck.set_leader(info)
+			add_to_deck_container(info)
+			return
+	
+	# Not taking into account the multicolored cards
+	if info["color"] == draftDeck.leaderColor:
+		draftDeck.add_to_deck(info)
+		add_to_deck_container(info)
+	else:
+		print("Error: color does not match")
+		return
+	
+func add_to_deck_container(info):
 	var canvas_layer = deck_instance.get_node_or_null("CanvasLayer")
 	if not canvas_layer:
 		print("Error: CanvasLayer not found")
@@ -123,3 +158,62 @@ func _on_button_pressed():
 
 func _on_button_2_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Menu/menu.tscn")
+
+func _on_save_button_pressed():
+	print("Save button pressed")
+	if draftDeck.has_leader() == true && (draftDeck.get_cards().size() >= 50):
+		draftDeck.save_to_JSON()
+
+func _on_previous_button_pressed():
+	if current_page < 1:
+		print("Error: already on the first page")
+		return
+	
+	current_page -= 1
+	var min_index = current_page * cards_per_page
+	var max_index = min_index + cards_per_page
+	populate_UI(min_index, max_index)
+
+# TODO: finish
+func disableOtherButtons(option: String):
+	var canvas_layer = deck_instance.get_node_or_null("CanvasLayer")
+	if not canvas_layer:
+		print("Error: could not find cavnas layer")
+		return
+	
+	var options_container = canvas_layer.get_node_or_null("OptionsContainer")
+	if not options_container:
+		print("Error: could not find options container")
+		
+	print(options_container.get_children())
+		
+	for checkbox in options_container.get_children():
+		if checkbox.text == option:
+			pass
+		
+		checkbox.disabled = true
+
+func _on_all_button_pressed():
+	print("Setting to all")
+	currentOption = cardTypes.ALL
+	disableOtherButtons("ALL")
+
+func _on_leader_button_pressed():
+	print("Setting to leader")
+	currentOption = cardTypes.LEADER
+	disableOtherButtons("LEADER")
+
+func _on_events_button_pressed():
+	print("Setting to events")
+	currentOption = cardTypes.EVENT
+	disableOtherButtons("EVENT")
+
+func _on_character_button_pressed():
+	print("Setting to character")
+	currentOption = cardTypes.CHARACTER
+	disableOtherButtons("CHARACTER")
+
+func _on_stage_button_pressed():
+	print("Setting to stage")
+	currentOption = cardTypes.STAGE
+	disableOtherButtons("STAGE")
