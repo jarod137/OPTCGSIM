@@ -61,8 +61,6 @@ func populate_UI(min_index: int = 0, max_index: int = 6, search: String = ""):
 	for child in grid_container.get_children():
 		child.queue_free()
 	
-	# Thinking about using index counter to keep track, and just keep incrementing that
-	# Something like card count
 	var index = min_index
 	var cardCount = 0 
 	
@@ -106,7 +104,6 @@ func _on_texture_button_pressed(info, instance) -> void:
 	print("Button pressed for: ", info["name"])
 	deck.append(info)
 	
-	# TODO: testing needed
 	if info["info"] == "LEADER":
 		if draftDeck.has_leader():
 			print("Leader already picked")
@@ -185,7 +182,6 @@ func _on_button_pressed():
 	current_page += 1
 	var min_index = current_page * cards_per_page
 	var max_index = min_index + cards_per_page
-	print("currentSearch: ", currentSearch)
 	populate_UI(min_index, max_index, currentSearch)
 
 # Main menu button
@@ -194,7 +190,7 @@ func _on_button_2_pressed():
 
 func _on_save_button_pressed():
 	print("Save button pressed")
-	if draftDeck.has_leader() == true && (draftDeck.get_cards().size() >= 50):
+	if draftDeck.has_leader() == true && (draftDeck.get_cards().size() <= 50):
 		draftDeck.save_to_JSON()
 
 func _on_previous_button_pressed():
@@ -205,7 +201,6 @@ func _on_previous_button_pressed():
 	current_page -= 1
 	var min_index = current_page * cards_per_page
 	var max_index = min_index + cards_per_page
-	print("currentSearch: ", currentSearch)
 	populate_UI(min_index, max_index, currentSearch)
 
 func _on_option_button_item_selected(index):
@@ -215,7 +210,6 @@ func _on_option_button_item_selected(index):
 	match index:
 		0:
 			currentOption = "ALL"
-			
 		1:
 			currentOption = "LEADER"
 		2:

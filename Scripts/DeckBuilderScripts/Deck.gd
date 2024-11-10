@@ -55,11 +55,20 @@ func max_cards_reached() -> bool:
 		
 	return false
 	
-# TODO: needs to be implemented and tested
-func save_to_JSON() -> bool:
+func save_to_JSON() -> void:
 	var deckSave = "res://Assets/SaveData/save.json"
 	var saveFile = FileAccess.open(deckSave, FileAccess.WRITE)
-	return false
+	
+	var save_dict = {
+		"Leader": leader,
+		"Cards": cards
+	}
+	
+	print(save_dict)
+	
+	var json_string = JSON.stringify(save_dict, "\t")
+	saveFile.store_string(json_string)
+	saveFile.close()
 
 # TODO: needs to be implemented && needs corresponding button
 func read_JSON() -> bool:
