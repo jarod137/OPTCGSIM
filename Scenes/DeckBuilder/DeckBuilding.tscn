@@ -22,31 +22,29 @@ metadata/_edit_use_anchors_ = true
 [node name="Container" type="Container" parent="CanvasLayer"]
 custom_minimum_size = Vector2(168, 238)
 anchors_preset = -1
-anchor_right = 0.146
-anchor_bottom = 0.369
-offset_right = -0.192015
-offset_bottom = -0.112011
+anchor_left = 0.0173611
+anchor_top = 0.0771605
+anchor_right = 0.163194
+anchor_bottom = 0.444444
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Container"]
-custom_minimum_size = Vector2(168, 238)
-layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
-clip_contents = false
 custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
 layout_direction = 2
 anchors_preset = -1
-anchor_left = 0.284
+anchor_left = 0.283854
+anchor_top = 0.0771605
 anchor_right = 1.0
-anchor_bottom = 0.367
-offset_left = -0.168011
-offset_bottom = 0.183991
+anchor_bottom = 0.444444
+offset_left = 1.14441e-05
 grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+vertical_scroll_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="DeckContainer" type="HBoxContainer" parent="CanvasLayer/ScrollContainer"]
@@ -57,11 +55,11 @@ theme_override_constants/separation = 10
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_top = 0.561728
+anchor_top = 0.582
 anchor_right = 1.0
-anchor_bottom = 0.9
-offset_top = -1.4782e-05
-offset_bottom = -1.52588e-05
+anchor_bottom = 0.889
+offset_top = -12.136
+offset_bottom = -0.0720377
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -71,14 +69,25 @@ theme_override_constants/v_separation = 20
 columns = 6
 script = ExtResource("2_662or")
 
-[node name="OptionButton" type="OptionButton" parent="CanvasLayer"]
-anchors_preset = 4
+[node name="Filter" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 14
 anchor_top = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
 offset_top = -15.5
-offset_right = 137.0
 offset_bottom = 15.5
+grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Filter"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Search"
+clear_button_enabled = true
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer/Filter"]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 item_count = 5
@@ -125,7 +134,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Save Deck"
 
-[connection signal="item_selected" from="CanvasLayer/OptionButton" to="CanvasLayer/GridContainer" method="_on_option_button_item_selected"]
+[connection signal="text_submitted" from="CanvasLayer/Filter/LineEdit" to="CanvasLayer/GridContainer" method="_on_line_edit_text_submitted"]
+[connection signal="item_selected" from="CanvasLayer/Filter/OptionButton" to="CanvasLayer/GridContainer" method="_on_option_button_item_selected"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/MenuButton" to="CanvasLayer/GridContainer" method="_on_button_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/PreviousButton" to="CanvasLayer/GridContainer" method="_on_previous_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/NextButton" to="CanvasLayer/GridContainer" method="_on_button_pressed"]

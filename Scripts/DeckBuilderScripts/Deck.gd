@@ -43,10 +43,16 @@ func add_to_deck(card) -> void:
 		print("Error: cannot add until you select a leader.")
 		return
 	
+	if max_cards_reached():
+		print("Error: max amount of cards reached")
+		return
+	
 	cards.append(card)
 	
-# TODO: needs to be implemented
 func max_cards_reached() -> bool:
+	if cards.size() > 50:
+		return true
+		
 	return false
 	
 # TODO: needs to be implemented and tested

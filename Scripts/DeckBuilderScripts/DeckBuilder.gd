@@ -5,7 +5,7 @@ var path = "res://Assets/CardData/data.json"
 var card_data = []
 
 var current_page = 0
-var cards_per_page = 12
+var cards_per_page = 6
 
 var deck = []
 
@@ -17,6 +17,8 @@ var cardScene = preload("res://Scenes/DeckBuilder/DeckBuildContainer.tscn")
 var deck_instance = deckBuilderScene.instantiate()
 
 var currentOption = "ALL"
+
+var currentSearch = ""
 
 func _ready():
 	load_card_data()
@@ -45,7 +47,7 @@ func load_card_data():
 		print("Error: JSON file not found")
 		
 		
-func populate_UI(min_index: int = 0, max_index: int = 12):
+func populate_UI(min_index: int = 0, max_index: int = 6, search: String = ""):
 	var canvas_layer = deck_instance.get_node_or_null("CanvasLayer")
 	if not canvas_layer:
 		print("Error: CanvasLayer not found")
@@ -64,21 +66,37 @@ func populate_UI(min_index: int = 0, max_index: int = 12):
 	var index = min_index
 	var cardCount = 0 
 	
-	while cardCount < 12 && index < card_data.size():
+	while cardCount < cards_per_page && index < card_data.size():
 		var card_info = card_data[index]
 		var card_instance = cardScene.instantiate()
 		
+		var card_name = card_info["name"]
+		
 		if card_info["info"] == currentOption || currentOption == "ALL":
-			var btn_node = card_instance.get_node("TextureButton")
-			if btn_node:
-				var img_path = card_info.get("imgPath", "")
-				if img_path != "":
-					var texture = load(img_path) as Texture2D
-					btn_node.texture_normal = texture
-				
-			btn_node.pressed.connect(_on_texture_button_pressed.bind(card_info, card_instance))	
-			grid_container.add_child(card_instance)
-			cardCount += 1
+			if !search == "":
+				if card_name.contains(search):
+					var btn_node = card_instance.get_node("TextureButton")
+					if btn_node:
+						var img_path = card_info.get("imgPath", "")
+						if img_path != "":
+							var texture = load(img_path) as Texture2D
+							btn_node.texture_normal = texture
+						
+					btn_node.pressed.connect(_on_texture_button_pressed.bind(card_info, card_instance))	
+					grid_container.add_child(card_instance)
+					cardCount += 1
+			else:
+				var btn_node = card_instance.get_node("TextureButton")
+				if btn_node:
+					var img_path = card_info.get("imgPath", "")
+					if img_path != "":
+						var texture = load(img_path) as Texture2D
+						btn_node.texture_normal = texture
+					
+				btn_node.pressed.connect(_on_texture_button_pressed.bind(card_info, card_instance))	
+				grid_container.add_child(card_instance)
+				cardCount += 1
+			
 		
 		index += 1
 
@@ -167,7 +185,8 @@ func _on_button_pressed():
 	current_page += 1
 	var min_index = current_page * cards_per_page
 	var max_index = min_index + cards_per_page
-	populate_UI(min_index, max_index)
+	print("currentSearch: ", currentSearch)
+	populate_UI(min_index, max_index, currentSearch)
 
 # Main menu button
 func _on_button_2_pressed():
@@ -186,7 +205,8 @@ func _on_previous_button_pressed():
 	current_page -= 1
 	var min_index = current_page * cards_per_page
 	var max_index = min_index + cards_per_page
-	populate_UI(min_index, max_index)
+	print("currentSearch: ", currentSearch)
+	populate_UI(min_index, max_index, currentSearch)
 
 func _on_option_button_item_selected(index):
 	var min_index = current_page * cards_per_page
@@ -195,6 +215,7 @@ func _on_option_button_item_selected(index):
 	match index:
 		0:
 			currentOption = "ALL"
+			
 		1:
 			currentOption = "LEADER"
 		2:
@@ -205,5 +226,17 @@ func _on_option_button_item_selected(index):
 			currentOption = "STAGE"
 		_:
 			print("Error: invalid input...somehow")
-	
-	populate_UI(min_index, max_index)
+			
+	var option_node = deck_instance.get_node_or_null("CanvasLayer/Filter/OptionButton")
+	if not option_node:
+		print("Error: could not find option node")
+		
+	option_node.selected = index
+	populate_UI(min_index, max_index, currentSearch)
+
+
+func _on_line_edit_text_submitted(new_text):
+	currentSearch = new_text
+	var min_index = current_page * cards_per_page
+	var max_index = min_index + cards_per_page
+	populate_UI(min_index, max_index, currentSearch)
