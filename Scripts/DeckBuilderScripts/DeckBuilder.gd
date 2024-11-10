@@ -11,25 +11,16 @@ var deck = []
 
 var draftDeck = Player_Deck.new()
 
-enum cardTypes {
-	CHARACTER,
-	LEADER,
-	EVENT,
-	STAGE,
-	ALL
-}
-
-# Change this to load if the scene is showing as corrupted
+# IMPORTANT: Change this to load if the scene is showing as corrupted
 var deckBuilderScene = preload("res://Scenes/DeckBuilder/DeckBuilding.tscn")
 var cardScene = preload("res://Scenes/DeckBuilder/DeckBuildContainer.tscn")
 var deck_instance = deckBuilderScene.instantiate()
 
-var currentOption = cardTypes.ALL
+var currentOption = "ALL"
 
 func _ready():
 	load_card_data()
 	populate_UI()
-	
 
 func _process(delta):
 	pass
@@ -68,32 +59,31 @@ func populate_UI(min_index: int = 0, max_index: int = 12):
 	for child in grid_container.get_children():
 		child.queue_free()
 	
-	for i in range(min_index, min(max_index, card_data.size())):
-		var card_info = card_data[i]
+	# Thinking about using index counter to keep track, and just keep incrementing that
+	# Something like card count
+	var index = min_index
+	var cardCount = 0 
+	
+	while cardCount < 12 && index < card_data.size():
+		var card_info = card_data[index]
 		var card_instance = cardScene.instantiate()
 		
-		if card_info["info"] == str(currentOption):
-			pass
+		if card_info["info"] == currentOption || currentOption == "ALL":
+			var btn_node = card_instance.get_node("TextureButton")
+			if btn_node:
+				var img_path = card_info.get("imgPath", "")
+				if img_path != "":
+					var texture = load(img_path) as Texture2D
+					btn_node.texture_normal = texture
 				
-		var btn_node = card_instance.get_node("TextureButton")
-		if btn_node:
-			var img_path = card_info.get("imgPath", "")
-			if img_path != "":
-				var texture = load(img_path) as Texture2D
-				btn_node.texture_normal = texture
-			
-		btn_node.pressed.connect(_on_texture_button_pressed.bind(card_info, card_instance))	
-		grid_container.add_child(card_instance)
+			btn_node.pressed.connect(_on_texture_button_pressed.bind(card_info, card_instance))	
+			grid_container.add_child(card_instance)
+			cardCount += 1
 		
+		index += 1
+
 	add_child(deck_instance)
-
-func _on_mouse_entered():
-	pass # Replace with function body.
-
-func _on_mouse_exited():
-	pass # Replace with function body.
 	
-# TODO: needs to be tested
 func _on_texture_button_pressed(info, instance) -> void:
 	print("Button pressed for: ", info["name"])
 	deck.append(info)
@@ -105,16 +95,45 @@ func _on_texture_button_pressed(info, instance) -> void:
 			return
 		else:
 			draftDeck.set_leader(info)
-			add_to_deck_container(info)
+			add_to_leader_container(info)
+			return
+	else:
+		if !draftDeck.has_leader():
+			print("Error: there is not a leader picked")
 			return
 	
-	# Not taking into account the multicolored cards
-	if info["color"] == draftDeck.leaderColor:
-		draftDeck.add_to_deck(info)
-		add_to_deck_container(info)
-	else:
-		print("Error: color does not match")
+	var cardColors = draftDeck.parseColor(info)
+	
+	for cardColor in cardColors:
+		for leaderColor in draftDeck.leaderColor:
+			if cardColor == leaderColor:
+				draftDeck.add_to_deck(info)
+				add_to_deck_container(info)
+	
+	print("Error: color does not match")
+	return
+		
+func add_to_leader_container(info):
+	var canvas_layer = deck_instance.get_node_or_null("CanvasLayer")
+	if not canvas_layer:
+		print("Error: CanvasLayer not found")
 		return
+		
+	var container = canvas_layer.get_node_or_null("Container")
+	if not container:
+		print("Error: container not found")
+		return
+		
+	var card_instance = cardScene.instantiate()
+	
+	var btn_node = card_instance.get_node("TextureButton")
+	if btn_node:
+		var img_path = info.get("imgPath", "")
+		if img_path != "":
+			var texture = load(img_path) as Texture2D
+			btn_node.texture_normal = texture
+		
+	container.add_child(card_instance)
 	
 func add_to_deck_container(info):
 	var canvas_layer = deck_instance.get_node_or_null("CanvasLayer")
@@ -143,12 +162,6 @@ func add_to_deck_container(info):
 			
 	deck_container.add_child(card_instance)
 	
-func _on_texture_button_mouse_entered():
-	pass # Replace with function body.
-
-func _on_texture_button_mouse_exited():
-	pass # Replace with function body.
-	
 # Next page button hit
 func _on_button_pressed():
 	current_page += 1
@@ -156,6 +169,7 @@ func _on_button_pressed():
 	var max_index = min_index + cards_per_page
 	populate_UI(min_index, max_index)
 
+# Main menu button
 func _on_button_2_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Menu/menu.tscn")
 
@@ -174,46 +188,22 @@ func _on_previous_button_pressed():
 	var max_index = min_index + cards_per_page
 	populate_UI(min_index, max_index)
 
-# TODO: finish
-func disableOtherButtons(option: String):
-	var canvas_layer = deck_instance.get_node_or_null("CanvasLayer")
-	if not canvas_layer:
-		print("Error: could not find cavnas layer")
-		return
+func _on_option_button_item_selected(index):
+	var min_index = current_page * cards_per_page
+	var max_index = min_index + cards_per_page
 	
-	var options_container = canvas_layer.get_node_or_null("OptionsContainer")
-	if not options_container:
-		print("Error: could not find options container")
-		
-	print(options_container.get_children())
-		
-	for checkbox in options_container.get_children():
-		if checkbox.text == option:
-			pass
-		
-		checkbox.disabled = true
-
-func _on_all_button_pressed():
-	print("Setting to all")
-	currentOption = cardTypes.ALL
-	disableOtherButtons("ALL")
-
-func _on_leader_button_pressed():
-	print("Setting to leader")
-	currentOption = cardTypes.LEADER
-	disableOtherButtons("LEADER")
-
-func _on_events_button_pressed():
-	print("Setting to events")
-	currentOption = cardTypes.EVENT
-	disableOtherButtons("EVENT")
-
-func _on_character_button_pressed():
-	print("Setting to character")
-	currentOption = cardTypes.CHARACTER
-	disableOtherButtons("CHARACTER")
-
-func _on_stage_button_pressed():
-	print("Setting to stage")
-	currentOption = cardTypes.STAGE
-	disableOtherButtons("STAGE")
+	match index:
+		0:
+			currentOption = "ALL"
+		1:
+			currentOption = "LEADER"
+		2:
+			currentOption = "CHARACTER"
+		3:
+			currentOption = "EVENT"
+		4:
+			currentOption = "STAGE"
+		_:
+			print("Error: invalid input...somehow")
+	
+	populate_UI(min_index, max_index)

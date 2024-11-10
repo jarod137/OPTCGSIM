@@ -8,6 +8,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 1.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ad845")
@@ -15,52 +19,41 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Container" type="Container" parent="CanvasLayer"]
+custom_minimum_size = Vector2(168, 238)
+anchors_preset = -1
+anchor_right = 0.146
+anchor_bottom = 0.369
+offset_right = -0.192015
+offset_bottom = -0.112011
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Container"]
+custom_minimum_size = Vector2(168, 238)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
 clip_contents = false
 custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
 layout_direction = 2
 anchors_preset = -1
-anchor_top = 0.0694444
+anchor_left = 0.284
 anchor_right = 1.0
-anchor_bottom = 0.425926
-grow_horizontal = 2
+anchor_bottom = 0.367
+offset_left = -0.168011
+offset_bottom = 0.183991
+grow_horizontal = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="DeckContainer" type="HBoxContainer" parent="CanvasLayer/ScrollContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
+size_flags_horizontal = 2
+size_flags_vertical = 6
 theme_override_constants/separation = 10
-
-[node name="OptionsContainer" type="HBoxContainer" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_top = 0.487654
-anchor_right = 1.0
-anchor_bottom = 0.546296
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 10
-
-[node name="allButton" type="CheckBox" parent="CanvasLayer/OptionsContainer"]
-layout_mode = 2
-text = "ALL"
-
-[node name="leaderButton" type="CheckBox" parent="CanvasLayer/OptionsContainer"]
-layout_mode = 2
-text = "LEADER"
-
-[node name="eventsButton" type="CheckBox" parent="CanvasLayer/OptionsContainer"]
-layout_mode = 2
-text = "EVENT"
-
-[node name="characterButton" type="CheckBox" parent="CanvasLayer/OptionsContainer"]
-layout_mode = 2
-text = "CHARACTER"
-
-[node name="stageButton" type="CheckBox" parent="CanvasLayer/OptionsContainer"]
-layout_mode = 2
-text = "STAGE"
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
 anchors_preset = -1
@@ -71,12 +64,35 @@ offset_top = -1.4782e-05
 offset_bottom = -1.52588e-05
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 6
 script = ExtResource("2_662or")
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_right = 137.0
+offset_bottom = 15.5
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+item_count = 5
+selected = 0
+popup/item_0/text = "ALL"
+popup/item_0/id = 0
+popup/item_1/text = "LEADER"
+popup/item_1/id = 1
+popup/item_2/text = "CHARACTER"
+popup/item_2/id = 2
+popup/item_3/text = "EVENT"
+popup/item_3/id = 3
+popup/item_4/text = "STAGE"
+popup/item_4/id = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = -1
@@ -109,13 +125,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Save Deck"
 
-[connection signal="pressed" from="CanvasLayer/OptionsContainer/allButton" to="CanvasLayer/GridContainer" method="_on_all_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/OptionsContainer/leaderButton" to="CanvasLayer/GridContainer" method="_on_leader_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/OptionsContainer/eventsButton" to="CanvasLayer/GridContainer" method="_on_events_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/OptionsContainer/characterButton" to="CanvasLayer/GridContainer" method="_on_character_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/OptionsContainer/stageButton" to="CanvasLayer/GridContainer" method="_on_stage_button_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer/GridContainer" to="CanvasLayer/GridContainer" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/GridContainer" to="CanvasLayer/GridContainer" method="_on_mouse_exited"]
+[connection signal="item_selected" from="CanvasLayer/OptionButton" to="CanvasLayer/GridContainer" method="_on_option_button_item_selected"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/MenuButton" to="CanvasLayer/GridContainer" method="_on_button_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/PreviousButton" to="CanvasLayer/GridContainer" method="_on_previous_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/NextButton" to="CanvasLayer/GridContainer" method="_on_button_pressed"]

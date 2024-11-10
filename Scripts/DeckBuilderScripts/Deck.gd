@@ -5,26 +5,23 @@ class_name Player_Deck
 
 var leader = null
 
-# This might not be needed
-var leaderColor = null
+var leaderColor = []
 
 var cards = []
 var json = JSON.new()
 
-# Checks if there is a leader present 
 func has_leader() -> bool:
 	if leader == null:
 		return false
 		
 	return true
 	
-# TODO: needs to be tested
 func set_leader(newLeader) -> bool:
 	leader = newLeader
 	
 	if leader == newLeader:
 		print("New leader set succcessfullly")
-		leaderColor = newLeader["color"]
+		leaderColor = parseColor(newLeader)
 		return true
 	else:
 		print("Error: something went wrong")
@@ -48,23 +45,31 @@ func add_to_deck(card) -> void:
 	
 	cards.append(card)
 	
+# TODO: needs to be implemented
+func max_cards_reached() -> bool:
+	return false
+	
 # TODO: needs to be implemented and tested
 func save_to_JSON() -> bool:
 	var deckSave = "res://Assets/SaveData/save.json"
 	var saveFile = FileAccess.open(deckSave, FileAccess.WRITE)
 	return false
 
-# TODO: needs to be implemented
+# TODO: needs to be implemented && needs corresponding button
 func read_JSON() -> bool:
 	return false
+	
+func parseColor(info) -> Array:
+	var colorInfo = info["color"]
+	var parsedColorInfo = colorInfo.rsplit("/", true)
+	return parsedColorInfo
 
-# TODO: needs to be tested
 func get_cards() -> Array:
 	return cards
 	
 func _init():
 	leader = null
-	print("constructed")
+	print("constructed", self)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
