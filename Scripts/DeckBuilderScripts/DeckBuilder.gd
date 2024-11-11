@@ -234,3 +234,12 @@ func _on_line_edit_text_submitted(new_text):
 	var min_index = current_page * cards_per_page
 	var max_index = min_index + cards_per_page
 	populate_UI(min_index, max_index, currentSearch)
+
+func _on_load_button_pressed():
+	draftDeck.read_JSON()
+	
+	if !draftDeck.leader == null:
+		add_to_leader_container(draftDeck.leader)
+	
+	for card in draftDeck.cards:
+		add_to_deck_container(card)

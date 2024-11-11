@@ -4,11 +4,12 @@ extends Control
 class_name Player_Deck
 
 var leader = null
-
 var leaderColor = []
 
 var cards = []
 var json = JSON.new()
+
+var json_data = []
 
 func has_leader() -> bool:
 	if leader == null:
@@ -16,16 +17,17 @@ func has_leader() -> bool:
 		
 	return true
 	
-func set_leader(newLeader) -> bool:
+func set_leader(newLeader) -> void:
+	if newLeader == null:
+		print("Error: newLeader is null")
+	
 	leader = newLeader
 	
 	if leader == newLeader:
 		print("New leader set succcessfullly")
 		leaderColor = parseColor(newLeader)
-		return true
 	else:
 		print("Error: something went wrong")
-		return false
 		
 # TODO: needs to be tested
 func remove_leader() -> bool:
@@ -64,15 +66,37 @@ func save_to_JSON() -> void:
 		"Cards": cards
 	}
 	
-	print(save_dict)
-	
 	var json_string = JSON.stringify(save_dict, "\t")
 	saveFile.store_string(json_string)
 	saveFile.close()
 
 # TODO: needs to be implemented && needs corresponding button
-func read_JSON() -> bool:
-	return false
+func read_JSON() -> void:
+	var deckSave = "res://Assets/SaveData/save.json"
+	var fileExists = FileAccess.file_exists(deckSave)
+	
+	if fileExists:
+		var file = FileAccess.open(deckSave, FileAccess.READ)
+		var fileContents = file.get_as_text()
+		
+		var result = json.parse(fileContents)
+		file.close()
+		
+		if result == OK:
+			var json_data = json.get_data()
+			
+			set_leader(json_data.get("Leader", ""))
+			
+			var card_data = json_data.get("Cards", [])
+			
+			for card in card_data:
+				add_to_deck(card)
+			
+			print("Loaded card data successfully")
+		else:
+			print("Error: could not parse JSON file", result.error_string)
+	else:
+		print("Error: JSON file not found")
 	
 func parseColor(info) -> Array:
 	var colorInfo = info["color"]
