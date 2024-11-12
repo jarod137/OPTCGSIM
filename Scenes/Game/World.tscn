@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://085m0pgrbo2t"]
+[gd_scene load_steps=6 format=3 uid="uid://085m0pgrbo2t"]
 
 [ext_resource type="Script" path="res://Scenes/Game/world.gd" id="1_0xtuj"]
 [ext_resource type="PackedScene" uid="uid://deotsx23pqaeq" path="res://Scenes/Game/card.tscn" id="1_imruo"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardContainer.gd" id="1_xeshw"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardPlacement.gd" id="3_yxjxn"]
+[ext_resource type="Script" path="res://Scripts/GameScripts/CardPlacement2.gd" id="5_olwlw"]
 
 [node name="Board" type="Node"]
 script = ExtResource("1_0xtuj")
@@ -56,48 +57,56 @@ offset_bottom = 139.0
 script = ExtResource("3_yxjxn")
 
 [node name="DonDeck" type="HBoxContainer" parent="UI/Player1"]
+layout_mode = 0
 offset_left = 57.0
 offset_top = 220.0
 offset_right = 128.0
 offset_bottom = 305.0
 
 [node name="LifeZone" type="HBoxContainer" parent="UI/Player1"]
+layout_mode = 0
 offset_left = 22.0
 offset_top = 22.0
 offset_right = 116.0
 offset_bottom = 187.0
 
 [node name="DonZone" type="HBoxContainer" parent="UI/Player1"]
-offset_left = 187.0
-offset_top = 214.0
-offset_right = 914.0
-offset_bottom = 312.0
+layout_mode = 0
+offset_left = 149.0
+offset_top = 210.0
+offset_right = 250.0
+offset_bottom = 308.0
 
 [node name="StageZone" type="HBoxContainer" parent="UI/Player1"]
+layout_mode = 0
 offset_left = 636.0
 offset_top = 71.0
 offset_right = 717.0
 offset_bottom = 179.0
 
 [node name="TrashZone" type="HBoxContainer" parent="UI/Player1"]
+layout_mode = 0
 offset_left = 917.0
 offset_top = 91.0
 offset_right = 988.0
 offset_bottom = 193.0
 
 [node name="LeaderZone" type="HBoxContainer" parent="UI/Player1"]
+layout_mode = 0
 offset_left = 799.0
 offset_top = 97.0
 offset_right = 881.0
 offset_bottom = 203.0
 
 [node name="Deck" type="HBoxContainer" parent="UI/Player1"]
+layout_mode = 0
 offset_left = 914.0
 offset_top = 211.0
 offset_right = 998.0
 offset_bottom = 313.0
 
 [node name="back" type="Button" parent="UI/Player1"]
+layout_mode = 0
 offset_left = -2.0
 offset_top = 284.0
 offset_right = 43.0
@@ -106,6 +115,7 @@ text = "back"
 metadata/_edit_use_anchors_ = true
 
 [node name="EndTurnButton" type="Button" parent="UI/Player1"]
+layout_mode = 0
 offset_left = 1017.0
 offset_top = 242.0
 offset_right = 1151.0
@@ -113,6 +123,7 @@ offset_bottom = 318.0
 text = "End Turn"
 
 [node name="StartTurnButton" type="Button" parent="UI/Player1"]
+layout_mode = 0
 offset_left = 1016.0
 offset_top = 159.0
 offset_right = 1150.0
@@ -141,7 +152,7 @@ grow_vertical = 2
 rotation = 0.000483792
 theme_override_constants/separation = -20
 alignment = 1
-script = ExtResource("1_xeshw")
+script = ExtResource("5_olwlw")
 
 [node name="Card1" parent="UI/Player2/Hand" instance=ExtResource("1_imruo")]
 layout_mode = 2
@@ -161,49 +172,56 @@ layout_mode = 2
 [node name="CardPlacement" type="Control" parent="UI/Player2"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 167.0
-offset_top = 7.0
-offset_right = 925.0
-offset_bottom = 122.0
-script = ExtResource("3_yxjxn")
+offset_left = 193.0
+offset_top = 23.0005
+offset_right = 951.0
+offset_bottom = 138.0
+script = ExtResource("5_olwlw")
 
 [node name="DonDeck" type="HBoxContainer" parent="UI/Player2"]
+layout_mode = 0
 offset_left = 57.0
 offset_top = 220.0
 offset_right = 128.0
 offset_bottom = 305.0
 
 [node name="LifeZone" type="HBoxContainer" parent="UI/Player2"]
+layout_mode = 0
 offset_left = 22.0
 offset_top = 22.0
 offset_right = 116.0
 offset_bottom = 187.0
 
 [node name="DonZone" type="HBoxContainer" parent="UI/Player2"]
+layout_mode = 0
 offset_left = 187.0
 offset_top = 214.0
-offset_right = 914.0
+offset_right = 356.0
 offset_bottom = 312.0
 
 [node name="StageZone" type="HBoxContainer" parent="UI/Player2"]
+layout_mode = 0
 offset_left = 655.0
 offset_top = 87.9999
 offset_right = 736.0
 offset_bottom = 196.0
 
 [node name="TrashZone" type="HBoxContainer" parent="UI/Player2"]
+layout_mode = 0
 offset_left = 917.0
 offset_top = 91.0
 offset_right = 988.0
 offset_bottom = 193.0
 
 [node name="LeaderZone" type="HBoxContainer" parent="UI/Player2"]
+layout_mode = 0
 offset_left = 799.0
 offset_top = 97.0
 offset_right = 881.0
 offset_bottom = 203.0
 
 [node name="Deck" type="HBoxContainer" parent="UI/Player2"]
+layout_mode = 0
 offset_left = 914.0
 offset_top = 211.0
 offset_right = 998.0
