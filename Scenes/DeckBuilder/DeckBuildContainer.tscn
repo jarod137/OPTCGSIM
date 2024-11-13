@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bip1wo3v0bmon"]
 
-[ext_resource type="Script" path="res://Scripts/DeckBuilderScripts/DeckBuilder.gd" id="1_qqm5r"]
+[ext_resource type="Script" path="res://Scripts/DeckBuilder.gd" id="1_qqm5r"]
 
 [node name="Container" type="Container"]
 custom_minimum_size = Vector2(168, 238)
