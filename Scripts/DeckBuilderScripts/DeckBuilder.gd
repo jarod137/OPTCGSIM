@@ -27,7 +27,6 @@ func _ready():
 func _process(delta):
 	pass
 
-# Could probably be moved to Deck.gd
 func load_card_data():
 	var fileExists = FileAccess.file_exists(path)
 	
@@ -48,6 +47,7 @@ func load_card_data():
 		
 		
 func populate_UI(min_index: int = 0, max_index: int = 6, search: String = ""):
+	print("got here")
 	var canvas_layer = deck_instance.get_node_or_null("CanvasLayer")
 	if not canvas_layer:
 		print("Error: CanvasLayer not found")
@@ -236,10 +236,28 @@ func _on_line_edit_text_submitted(new_text):
 	populate_UI(min_index, max_index, currentSearch)
 
 func _on_load_button_pressed():
+	var leader_node = deck_instance.get_node_or_null("CanvasLayer/Container")
+	if not leader_node:
+		print("Error: leader node not found")
+		return
+	
+	for child in leader_node.get_children():
+		child.queue_free()
+			
+	var deck_node = deck_instance.get_node_or_null("CanvasLayer/ScrollContainer/DeckContainer")
+	if not deck_node:
+		print("Error: deck node not found")
+		return
+	
+	for child in deck_node.get_children():
+		child.queue_free()
+	
 	draftDeck.read_JSON()
 	
 	if !draftDeck.leader == null:
 		add_to_leader_container(draftDeck.leader)
+	
+	deck = draftDeck.get_cards()
 	
 	for card in draftDeck.cards:
 		add_to_deck_container(card)

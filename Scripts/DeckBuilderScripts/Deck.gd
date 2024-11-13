@@ -83,11 +83,13 @@ func read_JSON() -> void:
 		file.close()
 		
 		if result == OK:
-			var json_data = json.get_data()
+			json_data = json.get_data()
 			
 			set_leader(json_data.get("Leader", ""))
 			
 			var card_data = json_data.get("Cards", [])
+			
+			cards.clear()
 			
 			for card in card_data:
 				add_to_deck(card)
