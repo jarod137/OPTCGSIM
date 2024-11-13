@@ -30,25 +30,19 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Port Number"
-
-[node name="port" type="LineEdit" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 40)
-layout_mode = 2
-text = "1072"
-placeholder_text = "default is 1072"
-
 [node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Network IP/URL"
+text = "Set Network IP/URL"
 
 [node name="ip" type="LineEdit" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
-text = "localhost"
-placeholder_text = "ex: localhost"
+text = "127.0.0.1"
+placeholder_text = "ex: 127.0.0.1, localhost"
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Default Host: ws://localhost:1072"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

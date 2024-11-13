@@ -5,6 +5,8 @@ const DEFAULT_IP = "localhost" #default localhost websocket
 
 @onready var address = $MarginContainer/VBoxContainer/ip
 @onready var port = $MarginContainer/VBoxContainer/port
+@onready var btn_host = $MarginContainer/VBoxContainer/HBoxContainer/btn_host
+@onready var btn_join = $MarginContainer/VBoxContainer/HBoxContainer/btn_join
 
 var peer = null
 
@@ -26,15 +28,19 @@ func _process(delta: float) -> void:
 	pass
 
 func _player_connected():
-	pass
+	print("player connected!")
 func _player_disconnected():
-	pass
+	if multiplayer.is_server():
+		print("Client disconnected")
+	else:
+		print("Server disconnected")
+
 func _connected_ok():
-	pass
+	print("it worked!!!")
 func _connected_fail():
-	pass
+	print("failed to connect...")
 func _server_disconnected():
-	pass
+	print("server disconnected...")
 
 
 func _on_back_pressed() -> void:
@@ -49,7 +55,11 @@ func _on_btn_host_pressed() -> void:
 		print("Can't host, address in use.")
 		return
 	multiplayer.set_multiplayer_peer(peer)
-	print("Waiting for player...", true)
+	btn_host.set_disabled(true)
+	btn_host.set_pressed_no_signal(true)
+	btn_join.set_disabled(true)
+	btn_host.set_pressed_no_signal(true)
+	print("Waiting for player on port "+str(DEFAULT_PORT))
 
 
 func _on_btn_join_pressed() -> void:
@@ -58,6 +68,6 @@ func _on_btn_join_pressed() -> void:
 		print("IP address is invalid.")
 		return
 	peer = WebSocketMultiplayerPeer.new()
-	peer.create_client(DEFAULT_IP)
+	peer.create_client("ws://"+ip+":"+str(DEFAULT_PORT))
 	multiplayer.set_multiplayer_peer(peer)
-	print("Connecting...")
+	print("Connecting to "+"ws://"+ip+":"+str(DEFAULT_PORT))
