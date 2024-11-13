@@ -79,7 +79,7 @@ func populate_UI(min_index: int = 0, max_index: int = 6, search: String = ""):
 							var texture = load(img_path) as Texture2D
 							btn_node.texture_normal = texture
 						
-					btn_node.pressed.connect(_on_texture_button_pressed.bind(card_info, card_instance))	
+					btn_node.pressed.connect(_on_texture_button_pressed.bind(card_info, card_instance))
 					grid_container.add_child(card_instance)
 					cardCount += 1
 			else:
@@ -96,8 +96,6 @@ func populate_UI(min_index: int = 0, max_index: int = 6, search: String = ""):
 			
 		
 		index += 1
-
-	#add_child(deck_instance)
 	
 func _on_texture_button_pressed(info, instance) -> void:
 	print("Button pressed for: ", info["name"])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://085m0pgrbo2t"]
+[gd_scene load_steps=8 format=3 uid="uid://085m0pgrbo2t"]
 
 [ext_resource type="Script" path="res://Scenes/Game/world.gd" id="1_0xtuj"]
 [ext_resource type="PackedScene" uid="uid://deotsx23pqaeq" path="res://Scenes/Game/card.tscn" id="1_imruo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardPlacement.gd" id="3_yxjxn"]
 [ext_resource type="Script" path="res://Scenes/Game/don_deck.gd" id="5_ftllk"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardPlacement2.gd" id="5_olwlw"]
+[ext_resource type="Script" path="res://Scripts/GameScripts/Game_Deck.gd" id="7_kk811"]
 
 [node name="Board" type="Node"]
 script = ExtResource("1_0xtuj")
@@ -19,6 +20,7 @@ offset_left = 2.0
 offset_top = 328.0
 offset_right = 1148.0
 offset_bottom = 326.0
+script = ExtResource("7_kk811")
 
 [node name="Hand" type="HBoxContainer" parent="UI/Player1"]
 layout_mode = 1
@@ -95,17 +97,20 @@ offset_bottom = 193.0
 
 [node name="LeaderZone" type="HBoxContainer" parent="UI/Player1"]
 layout_mode = 0
-offset_left = 799.0
-offset_top = 97.0
-offset_right = 881.0
-offset_bottom = 203.0
+anchor_left = 0.697208
+anchor_top = 0.301242
+anchor_right = 0.768761
+anchor_bottom = 0.630435
+offset_bottom = -1.52588e-05
+metadata/_edit_use_anchors_ = true
 
-[node name="Deck" type="HBoxContainer" parent="UI/Player1"]
+[node name="Deck" type="Container" parent="UI/Player1"]
 layout_mode = 0
-offset_left = 914.0
-offset_top = 211.0
-offset_right = 998.0
-offset_bottom = 313.0
+anchor_left = 0.797557
+anchor_top = 0.65528
+anchor_right = 0.870855
+anchor_bottom = 0.97205
+metadata/_edit_use_anchors_ = true
 
 [node name="back" type="Button" parent="UI/Player1"]
 layout_mode = 0
@@ -228,6 +233,7 @@ offset_left = 914.0
 offset_top = 211.0
 offset_right = 998.0
 offset_bottom = 313.0
+script = ExtResource("7_kk811")
 
 [node name="Win" type="Button" parent="UI/Player2"]
 layout_mode = 0

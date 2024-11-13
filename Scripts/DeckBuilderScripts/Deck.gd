@@ -29,7 +29,6 @@ func set_leader(newLeader) -> void:
 	else:
 		print("Error: something went wrong")
 		
-# TODO: needs to be tested
 func remove_leader() -> bool:
 	leader = null
 	leaderColor = null
@@ -39,7 +38,6 @@ func remove_leader() -> bool:
 	else:
 		return false
 		
-# TODO: needs to implement a check for max amount of cards
 func add_to_deck(card) -> void:
 	if has_leader() == false:
 		print("Error: cannot add until you select a leader.")
@@ -70,7 +68,6 @@ func save_to_JSON() -> void:
 	saveFile.store_string(json_string)
 	saveFile.close()
 
-# TODO: needs to be implemented && needs corresponding button
 func read_JSON() -> void:
 	var deckSave = "res://Assets/SaveData/save.json"
 	var fileExists = FileAccess.file_exists(deckSave)
@@ -111,10 +108,6 @@ func get_cards() -> Array:
 func _init():
 	leader = null
 	print("constructed", self)
-	
-func init_JSON():
-	if json == null:
-		json = JSON.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
