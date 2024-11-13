@@ -111,6 +111,10 @@ func get_cards() -> Array:
 func _init():
 	leader = null
 	print("constructed", self)
+	
+func init_JSON():
+	if json == null:
+		json = JSON.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

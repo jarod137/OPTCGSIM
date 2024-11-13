@@ -9,18 +9,18 @@ var cards_per_page = 6
 
 var deck = []
 
-var draftDeck = Player_Deck.new()
+var draftDeck
 
 # IMPORTANT: Change this to load if the scene is showing as corrupted
 var deckBuilderScene = preload("res://Scenes/DeckBuilder/DeckBuilding.tscn")
 var cardScene = preload("res://Scenes/DeckBuilder/DeckBuildContainer.tscn")
-var deck_instance = deckBuilderScene.instantiate()
 
 var currentOption = "ALL"
 
 var currentSearch = ""
 
 func _ready():
+	draftDeck = Player_Deck.new()
 	load_card_data()
 	populate_UI()
 
@@ -47,8 +47,7 @@ func load_card_data():
 		
 		
 func populate_UI(min_index: int = 0, max_index: int = 6, search: String = ""):
-	print("got here")
-	var canvas_layer = deck_instance.get_node_or_null("CanvasLayer")
+	var canvas_layer = get_node_or_null("CanvasLayer")
 	if not canvas_layer:
 		print("Error: CanvasLayer not found")
 		return
@@ -98,7 +97,7 @@ func populate_UI(min_index: int = 0, max_index: int = 6, search: String = ""):
 		
 		index += 1
 
-	add_child(deck_instance)
+	#add_child(deck_instance)
 	
 func _on_texture_button_pressed(info, instance) -> void:
 	print("Button pressed for: ", info["name"])
@@ -129,7 +128,7 @@ func _on_texture_button_pressed(info, instance) -> void:
 	return
 		
 func add_to_leader_container(info):
-	var canvas_layer = deck_instance.get_node_or_null("CanvasLayer")
+	var canvas_layer = get_node_or_null("CanvasLayer")
 	if not canvas_layer:
 		print("Error: CanvasLayer not found")
 		return
@@ -150,8 +149,10 @@ func add_to_leader_container(info):
 		
 	container.add_child(card_instance)
 	
+
+	
 func add_to_deck_container(info):
-	var canvas_layer = deck_instance.get_node_or_null("CanvasLayer")
+	var canvas_layer = get_node_or_null("CanvasLayer")
 	if not canvas_layer:
 		print("Error: CanvasLayer not found")
 		return
@@ -221,7 +222,7 @@ func _on_option_button_item_selected(index):
 		_:
 			print("Error: invalid input...somehow")
 			
-	var option_node = deck_instance.get_node_or_null("CanvasLayer/Filter/OptionButton")
+	var option_node = get_node_or_null("CanvasLayer/Filter/OptionButton")
 	if not option_node:
 		print("Error: could not find option node")
 		
@@ -235,8 +236,9 @@ func _on_line_edit_text_submitted(new_text):
 	var max_index = min_index + cards_per_page
 	populate_UI(min_index, max_index, currentSearch)
 
+
 func _on_load_button_pressed():
-	var leader_node = deck_instance.get_node_or_null("CanvasLayer/Container")
+	var leader_node = get_node_or_null("CanvasLayer/Container")
 	if not leader_node:
 		print("Error: leader node not found")
 		return
@@ -244,7 +246,7 @@ func _on_load_button_pressed():
 	for child in leader_node.get_children():
 		child.queue_free()
 			
-	var deck_node = deck_instance.get_node_or_null("CanvasLayer/ScrollContainer/DeckContainer")
+	var deck_node = get_node_or_null("CanvasLayer/ScrollContainer/DeckContainer")
 	if not deck_node:
 		print("Error: deck node not found")
 		return

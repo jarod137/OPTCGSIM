@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://cklsrsty1xv8d"]
+[gd_scene load_steps=2 format=3 uid="uid://cklsrsty1xv8d"]
 
-[ext_resource type="Script" path="res://Scripts/DeckBuilderScripts/Deck.gd" id="1_ad845"]
 [ext_resource type="Script" path="res://Scripts/DeckBuilderScripts/DeckBuilder.gd" id="2_662or"]
 
 [node name="DeckBuilding" type="Control"]
@@ -14,7 +13,7 @@ offset_right = 1.0
 offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ad845")
+script = ExtResource("2_662or")
 metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -67,7 +66,6 @@ size_flags_vertical = 3
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 6
-script = ExtResource("2_662or")
 
 [node name="Filter" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 14
@@ -90,10 +88,9 @@ clear_button_enabled = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-item_count = 5
 selected = 0
+item_count = 5
 popup/item_0/text = "ALL"
-popup/item_0/id = 0
 popup/item_1/text = "LEADER"
 popup/item_1/id = 1
 popup/item_2/text = "CHARACTER"
@@ -139,10 +136,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Load Saved Deck"
 
-[connection signal="text_submitted" from="CanvasLayer/Filter/LineEdit" to="CanvasLayer/GridContainer" method="_on_line_edit_text_submitted"]
-[connection signal="item_selected" from="CanvasLayer/Filter/OptionButton" to="CanvasLayer/GridContainer" method="_on_option_button_item_selected"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/MenuButton" to="CanvasLayer/GridContainer" method="_on_button_2_pressed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/PreviousButton" to="CanvasLayer/GridContainer" method="_on_previous_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/NextButton" to="CanvasLayer/GridContainer" method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/SaveButton" to="CanvasLayer/GridContainer" method="_on_save_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/LoadButton" to="CanvasLayer/GridContainer" method="_on_load_button_pressed"]
+[connection signal="text_submitted" from="CanvasLayer/Filter/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="item_selected" from="CanvasLayer/Filter/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/MenuButton" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/PreviousButton" to="." method="_on_previous_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/NextButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
