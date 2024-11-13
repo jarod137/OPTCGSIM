@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://cklsrsty1xv8d"]
+[gd_scene load_steps=2 format=3 uid="uid://cklsrsty1xv8d"]
 
-[ext_resource type="Script" path="res://Scripts/DeckBuilderScripts/Gamer.gd" id="1_b5nvh"]
 [ext_resource type="Script" path="res://Scripts/DeckBuilderScripts/DeckBuilder.gd" id="2_662or"]
 
 [node name="DeckBuilding" type="Control"]
@@ -8,73 +7,139 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_662or")
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Container" type="Container" parent="CanvasLayer"]
+custom_minimum_size = Vector2(168, 238)
+anchors_preset = -1
+anchor_left = 0.0173611
+anchor_top = 0.0771605
+anchor_right = 0.163194
+anchor_bottom = 0.444444
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_b5nvh")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+metadata/_edit_use_anchors_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
-clip_contents = false
-custom_minimum_size = Vector2(2.08165e-12, 300)
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
 layout_direction = 2
 anchors_preset = -1
+anchor_left = 0.283854
+anchor_top = 0.0771605
 anchor_right = 1.0
-anchor_bottom = 0.257716
-offset_bottom = 133.0
-grow_vertical = 2
+anchor_bottom = 0.444444
+offset_left = 1.14441e-05
+grow_horizontal = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+vertical_scroll_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="DeckContainer" type="HBoxContainer" parent="CanvasLayer/ScrollContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 2
+size_flags_vertical = 6
 theme_override_constants/separation = 10
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.009
-anchor_top = 0.481
-anchor_right = 0.99
-anchor_bottom = 0.917
-offset_left = -10.368
-offset_top = -6.68802
-offset_right = 11.5199
-offset_bottom = 10.784
+anchor_top = 0.582
+anchor_right = 1.0
+anchor_bottom = 0.889
+offset_top = -12.136
+offset_bottom = -0.0720377
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/h_separation = 20
-theme_override_constants/v_separation = 50
+theme_override_constants/v_separation = 20
 columns = 6
-script = ExtResource("2_662or")
+
+[node name="Filter" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Filter"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Search"
+clear_button_enabled = true
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer/Filter"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+selected = 0
+item_count = 5
+popup/item_0/text = "ALL"
+popup/item_1/text = "LEADER"
+popup/item_1/id = 1
+popup/item_2/text = "CHARACTER"
+popup/item_2/id = 2
+popup/item_3/text = "EVENT"
+popup/item_3/id = 3
+popup/item_4/text = "STAGE"
+popup/item_4/id = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_top = 0.952
+anchor_top = 0.95216
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 0.103986
+offset_top = 1.04904e-05
 grow_horizontal = 2
 grow_vertical = 0
-size_flags_vertical = 3
 alignment = 1
 
-[node name="Button2" type="Button" parent="CanvasLayer/HBoxContainer"]
+[node name="MenuButton" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Back"
+text = "Main Menu"
 
-[node name="Button" type="Button" parent="CanvasLayer/HBoxContainer"]
+[node name="PreviousButton" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Previous page"
+
+[node name="NextButton" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Next page"
 expand_icon = true
 
-[connection signal="mouse_entered" from="CanvasLayer/GridContainer" to="CanvasLayer/GridContainer" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/GridContainer" to="CanvasLayer/GridContainer" method="_on_mouse_exited"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/Button2" to="CanvasLayer/GridContainer" method="_on_button_2_pressed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/Button" to="CanvasLayer/GridContainer" method="_on_button_pressed"]
+[node name="SaveButton" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save Deck"
+
+[node name="LoadButton" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Load Saved Deck"
+
+[connection signal="text_submitted" from="CanvasLayer/Filter/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="item_selected" from="CanvasLayer/Filter/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/MenuButton" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/PreviousButton" to="." method="_on_previous_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/NextButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]

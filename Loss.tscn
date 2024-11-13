@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmc61eqs5uai7"]
+
+[ext_resource type="Script" path="res://loss.gd" id="1_ijedg"]
+
+[node name="Loss" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ijedg")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+offset_left = 547.0
+offset_top = 249.0
+offset_right = 592.0
+offset_bottom = 289.0
+
+[node name="Button" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+text = "Back
+"
+
+[node name="Label" type="Label" parent="UI"]
+offset_left = 531.0
+offset_top = 207.0
+offset_right = 614.0
+offset_bottom = 233.0
+text = "You Lose :("
+
+[connection signal="pressed" from="UI/HBoxContainer/Button" to="." method="_on_button_pressed"]

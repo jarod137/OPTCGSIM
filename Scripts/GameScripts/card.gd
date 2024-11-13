@@ -4,10 +4,18 @@ extends Container
 @onready var card = preload("res://Scenes/Game/cardHolder.tscn")
 var startPosition
 var cardHighlighted = false
+var isRested = false
 
 func _ready():
 	startPosition = self.position
 
+func setActive():
+	$Anim.play("Active")
+	isRested = false
+
+func setRested():
+	$Anim.play("Rested")
+	isRested = true
 
 func _on_mouse_entered():
 	$Anim.play("Select")
@@ -16,6 +24,43 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	$Anim.play("DeSelect")
 	cardHighlighted = false
+
+func Battle():
+	# how I plan to implement battling
+	
+	#blockerStep()
+	#counterStep()
+	#if power < opponentPower:
+	#	pass
+	#else:
+	#	if isLeader:
+	#		takeLife()
+	#	else:
+	#		opponentCard.trash()
+	pass
+
+# how I am going to implement keyword handling when cards are linked to the deck file
+func keyword_check():
+	if card.text.contains("Rush"):
+		pass
+	elif card.text.contains("DoubleAttack"):
+		pass
+	elif card.text.contains("Banish"):
+		pass
+	elif card.text.contains("OnPlay"):
+		pass
+	elif card.text.contains("WhenAttacking"):
+		pass
+	elif card.text.contains("OnBlock"):
+		pass
+	elif card.text.contains("Don x"):
+		pass
+	elif card.text.contains("Don -"):
+		pass
+	elif card.text.contains("Blocker"):
+		pass
+	else:
+		pass
 
 func _on_gui_input(event):
 	if (event is InputEventMouseButton) and (event.button_index == 1):
@@ -41,4 +86,3 @@ func _on_gui_input(event):
 				for i in get_tree().get_root().get_node("Board/CardHolder").get_child_count():
 					get_tree().get_root().get_node("Board/CardHolder").get_child(i).queue_free()
 				Game.cardSelected = false
-	
