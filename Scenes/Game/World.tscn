@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://085m0pgrbo2t"]
+[gd_scene load_steps=7 format=3 uid="uid://085m0pgrbo2t"]
 
 [ext_resource type="Script" path="res://Scenes/Game/world.gd" id="1_0xtuj"]
 [ext_resource type="PackedScene" uid="uid://deotsx23pqaeq" path="res://Scenes/Game/card.tscn" id="1_imruo"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardContainer.gd" id="1_xeshw"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardPlacement.gd" id="3_yxjxn"]
+[ext_resource type="Script" path="res://Scenes/Game/don_deck.gd" id="5_ftllk"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardPlacement2.gd" id="5_olwlw"]
 
 [node name="Board" type="Node"]
@@ -62,6 +63,7 @@ offset_left = 57.0
 offset_top = 220.0
 offset_right = 128.0
 offset_bottom = 305.0
+script = ExtResource("5_ftllk")
 
 [node name="LifeZone" type="HBoxContainer" parent="UI/Player1"]
 layout_mode = 0
@@ -227,6 +229,24 @@ offset_top = 211.0
 offset_right = 998.0
 offset_bottom = 313.0
 
+[node name="Win" type="Button" parent="UI/Player2"]
+layout_mode = 0
+offset_left = 1151.0
+offset_top = 322.003
+offset_right = 1189.0
+offset_bottom = 353.003
+rotation = -3.12362
+text = "Win"
+
+[node name="Lose" type="Button" parent="UI/Player2"]
+layout_mode = 0
+offset_left = 1093.0
+offset_top = 322.003
+offset_right = 1131.0
+offset_bottom = 353.003
+rotation = -3.12362
+text = "Lose"
+
 [node name="CardHolder" type="Node" parent="."]
 
 [connection signal="mouse_entered" from="UI/Player1/Hand" to="UI/Player1/Hand" method="_on_mouse_entered"]
@@ -240,3 +260,5 @@ offset_bottom = 313.0
 [connection signal="mouse_exited" from="UI/Player2/Hand" to="UI/Player2/Hand" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="UI/Player2/CardPlacement" to="UI/Player2/CardPlacement" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/Player2/CardPlacement" to="UI/Player2/CardPlacement" method="_on_mouse_exited"]
+[connection signal="pressed" from="UI/Player2/Win" to="." method="_on_win_pressed"]
+[connection signal="pressed" from="UI/Player2/Lose" to="." method="_on_lose_pressed"]

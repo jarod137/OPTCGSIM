@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://vxca7ymlvjhb"]
+
+[ext_resource type="Script" path="res://victoryScreen.gd" id="1_wkxge"]
+
+[node name="Victory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wkxge")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+offset_left = 547.0
+offset_top = 249.0
+offset_right = 592.0
+offset_bottom = 289.0
+
+[node name="Button" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+text = "Back
+"
+
+[node name="Label" type="Label" parent="UI"]
+offset_left = 521.0
+offset_top = 208.0
+offset_right = 598.0
+offset_bottom = 234.0
+text = "You Win!!"
+
+[connection signal="pressed" from="UI/HBoxContainer/Button" to="." method="_on_button_pressed"]

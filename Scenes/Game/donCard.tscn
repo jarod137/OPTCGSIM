@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://djhml3nuwi7sx"]
+[gd_scene load_steps=9 format=3 uid="uid://djhml3nuwi7sx"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/Card.gd" id="1_ohqy2"]
 [ext_resource type="Texture2D" uid="uid://iir84nulragi" path="res://Assets/CardBacks/backcard3.png" id="2_gdx5v"]
@@ -51,14 +51,18 @@ tracks/0/keys = {
 "values": [Vector2(52, 67), Vector2(52, 20)]
 }
 
+[sub_resource type="Animation" id="Animation_0f3d0"]
+resource_name = "face_up"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_blu37"]
 _data = {
 "DeSelect": SubResource("Animation_7k3b2"),
 "RESET": SubResource("Animation_7wupx"),
-"Select": SubResource("Animation_0gtgv")
+"Select": SubResource("Animation_0gtgv"),
+"face_up": SubResource("Animation_0f3d0")
 }
 
-[node name="Card" type="Container"]
+[node name="DonCard" type="Container"]
 custom_minimum_size = Vector2(105, 136)
 offset_right = 105.0
 offset_bottom = 136.0
@@ -66,12 +70,12 @@ script = ExtResource("1_ohqy2")
 
 [node name="CardBacks" type="Sprite2D" parent="."]
 position = Vector2(52, 67)
-scale = Vector2(0.123426, 0.124777)
+scale = Vector2(0.0440181, 0.0472756)
 texture = ExtResource("2_gdx5v")
 
 [node name="CardFront" type="Sprite2D" parent="."]
-position = Vector2(255, 211)
-scale = Vector2(0.313472, 0.321839)
+visible = false
+scale = Vector2(0.123, 0.125)
 texture = ExtResource("3_714c8")
 
 [node name="Anim" type="AnimationPlayer" parent="."]
