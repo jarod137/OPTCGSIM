@@ -1,15 +1,15 @@
 [gd_scene load_steps=2 format=3 uid="uid://cg4s3kqg5rq88"]
 
-[ext_resource type="Script" path="res://Netorking/network.gd" id="1_olkjl"]
+[ext_resource type="Script" path="res://Netorking/lobby.gd" id="1_u7on4"]
 
-[node name="Network" type="Control"]
+[node name="Lobby" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_olkjl")
+script = ExtResource("1_u7on4")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -32,31 +32,42 @@ size_flags_vertical = 4
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Set Port Number"
+text = "Port Number"
 
-[node name="client_port" type="TextEdit" parent="MarginContainer/VBoxContainer"]
-clip_contents = false
+[node name="port" type="LineEdit" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
+text = "1072"
 placeholder_text = "default is 1072"
 
 [node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Specify WebSocket URL"
+text = "Network IP/URL"
 
-[node name="ws_url" type="TextEdit" parent="MarginContainer/VBoxContainer"]
-clip_contents = false
+[node name="ip" type="LineEdit" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
-placeholder_text = "ws://localhost:1073"
+text = "localhost"
+placeholder_text = "ex: localhost"
 
-[node name="btn_connect" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Connect"
+
+[node name="btn_host" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Host"
+
+[node name="btn_join" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Join"
 
 [node name="back" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Back
 "
 
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/btn_host" to="." method="_on_btn_host_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/btn_join" to="." method="_on_btn_join_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/back" to="." method="_on_back_pressed"]
