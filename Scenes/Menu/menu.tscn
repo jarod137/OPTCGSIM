@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbheqfk16k75x"]
+[gd_scene load_steps=4 format=3 uid="uid://bbheqfk16k75x"]
 
 [ext_resource type="Script" path="res://Scripts/MenuScripts/menu.gd" id="1_piaib"]
+[ext_resource type="Theme" uid="uid://gmjysn315cso" path="res://Assets/Buttons/DefaultButton.tres" id="2_0sf5t"]
+[ext_resource type="Texture2D" uid="uid://caxtbt4ne30u7" path="res://Assets/logo/logo.png" id="3_lawa3"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -18,10 +20,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -68.0
-offset_right = 35.0
-offset_bottom = 68.0
+offset_left = -212.0
+offset_top = -70.0
+offset_right = -100.0
+offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -30,20 +32,28 @@ layout_mode = 2
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_0sf5t")
 text = "Play"
 
 [node name="DeckBuilder" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_0sf5t")
 text = "Decks"
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_0sf5t")
 text = "Options"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_0sf5t")
 text = "Quit"
 icon_alignment = 1
+
+[node name="Opsim-removebg-preview(1)" type="Sprite2D" parent="."]
+position = Vector2(935, 213)
+texture = ExtResource("3_lawa3")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/DeckBuilder" to="." method="_on_deck_builder_pressed"]

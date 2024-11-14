@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ip2tr0rjeomn"]
+
+[ext_resource type="AudioStream" uid="uid://m8o5ifmljf2k" path="res://Assets/Music/ButtonClick.wav" id="1_7sach"]
+
+[node name="ButtonClick" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_7sach")
