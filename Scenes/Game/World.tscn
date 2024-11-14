@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://085m0pgrbo2t"]
+[gd_scene load_steps=9 format=3 uid="uid://085m0pgrbo2t"]
 
 [ext_resource type="Script" path="res://Scenes/Game/world.gd" id="1_0xtuj"]
 [ext_resource type="PackedScene" uid="uid://deotsx23pqaeq" path="res://Scenes/Game/card.tscn" id="1_imruo"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scenes/Game/don_deck.gd" id="5_ftllk"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardPlacement2.gd" id="5_olwlw"]
 [ext_resource type="Theme" uid="uid://gmjysn315cso" path="res://Assets/Buttons/DefaultButton.tres" id="6_e4y0e"]
+[ext_resource type="AudioStream" uid="uid://m8o5ifmljf2k" path="res://Assets/Music/ButtonClick.wav" id="8_3623m"]
 
 [node name="Board" type="Node"]
 script = ExtResource("1_0xtuj")
@@ -251,6 +252,9 @@ rotation = -3.12362
 text = "Lose"
 
 [node name="CardHolder" type="Node" parent="."]
+
+[node name="ButtonSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_3623m")
 
 [connection signal="mouse_entered" from="UI/Player1/Hand" to="UI/Player1/Hand" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/Player1/Hand" to="UI/Player1/Hand" method="_on_mouse_exited"]
