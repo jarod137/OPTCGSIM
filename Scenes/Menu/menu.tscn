@@ -42,7 +42,7 @@ theme = ExtResource("2_0sf5t")
 text = "Quit"
 icon_alignment = 1
 
-[node name="Opsim-removebg-preview(1)" type="Sprite2D" parent="."]
+[node name="Logo" type="Sprite2D" parent="."]
 position = Vector2(592, 296)
 texture = ExtResource("3_lawa3")
 
