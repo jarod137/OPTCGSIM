@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://obm5a2ogu7p7"]
+[gd_scene load_steps=3 format=3 uid="uid://obm5a2ogu7p7"]
 
 [ext_resource type="Script" path="res://Scripts/OptionsScripts/options_menu.gd" id="1_gfh4j"]
+[ext_resource type="Theme" uid="uid://gmjysn315cso" path="res://Assets/Buttons/DefaultButton.tres" id="2_n0st1"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -29,15 +30,18 @@ size_flags_vertical = 4
 
 [node name="Volume" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_n0st1")
 text = "Volume"
 
 [node name="Network" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_n0st1")
 text = "Network
 "
 
 [node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_n0st1")
 text = "Back"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Volume" to="." method="_on_volume_pressed"]
