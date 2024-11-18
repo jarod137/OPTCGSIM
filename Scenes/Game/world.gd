@@ -9,12 +9,14 @@ func _on_back_pressed() -> void:
 
 func _on_end_turn_button_pressed() -> void:
 	$ButtonSound.play()
+	$UI/Player1/DonDeck.donDraw()
 
 
 func _on_start_turn_button_pressed() -> void:
 	$ButtonSound.play()
 	if turncount == 0:
 		$UI/Player1/DonDeck.setUpDon()
+	turncount += 1
 
 
 

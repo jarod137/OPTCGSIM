@@ -5,6 +5,11 @@ extends Container
 var startPosition
 var cardHighlighted = false
 var isRested = false
+var isDon = false
+var isLeader = false
+var isCharacter = false
+var isStage = false
+var isEvent = false
 
 func _ready():
 	startPosition = self.position

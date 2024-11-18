@@ -64,18 +64,20 @@ _data = {
 
 [node name="DonCard" type="Container"]
 custom_minimum_size = Vector2(105, 136)
-offset_right = 105.0
+offset_left = 1.0
+offset_right = 106.0
 offset_bottom = 136.0
 script = ExtResource("1_ohqy2")
 
 [node name="CardBacks" type="Sprite2D" parent="."]
 position = Vector2(52, 67)
-scale = Vector2(0.0440181, 0.0472756)
+scale = Vector2(0.11851, 0.109776)
 texture = ExtResource("2_gdx5v")
 
 [node name="CardFront" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.123, 0.125)
+position = Vector2(51.5, 69)
+scale = Vector2(0.303109, 0.283525)
 texture = ExtResource("3_714c8")
 
 [node name="Anim" type="AnimationPlayer" parent="."]
