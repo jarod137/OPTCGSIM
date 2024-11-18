@@ -58,6 +58,7 @@ func max_cards_reached() -> bool:
 func save_to_JSON(filename: String) -> void:
 	var deckSave = "res://Assets/SaveData/"
 	var completeFileName = deckSave + filename + ".json"
+	print("Saving: ", completeFileName)
 	
 	var saveFile = FileAccess.open(completeFileName, FileAccess.WRITE)
 	

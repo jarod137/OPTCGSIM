@@ -11,12 +11,13 @@ var deck = []
 
 var draftDeck
 
-# IMPORTANT: Change this to load if the scene is showing as corrupted
 var deckBuilderScene = preload("res://Scenes/DeckBuilder/DeckBuilding.tscn")
 var cardScene = preload("res://Scenes/DeckBuilder/DeckBuildContainer.tscn")
 
-var currentOption = "ALL"
+@onready var popupScene = preload("res://Scenes/DeckBuilder/PopUpLoad.tscn")
+@onready var popUpSave = preload("res://Scenes/DeckBuilder/PopUpSave.tscn")
 
+var currentOption = "ALL"
 var currentSearch = ""
 
 func _ready():
@@ -189,7 +190,15 @@ func _on_button_2_pressed():
 
 func _on_save_button_pressed():
 	print("Save button pressed")
-	var filename = get_text_content()
+	
+	var popup_instance = popUpSave.instantiate()
+	add_child(popup_instance)
+	popup_instance.position = get_viewport().size / 2
+	
+	popup_instance.value_selected.connect(_on_save_popup_value_selected)
+	
+		
+func _on_save_popup_value_selected(filename):
 	if filename == "":
 		print("Error: no filename is specified")
 		return
@@ -239,7 +248,22 @@ func _on_line_edit_text_submitted(new_text):
 	populate_UI(min_index, max_index, currentSearch)
 
 func _on_load_button_pressed():
-	var fileName = get_text_content()
+	var popup_instance = popupScene.instantiate()
+	add_child(popup_instance)
+	popup_instance.position = get_viewport().size / 2
+	
+	popup_instance.value_selected.connect(_on_load_popup_value_selected)
+
+func get_text_content() -> String:
+	var text = get_node_or_null("CanvasLayer/FileName")
+	if text.text == null:
+		print("Error: please specify a file name")
+		return ""
+		
+	return text.text
+
+func _on_load_popup_value_selected(value: String) -> void:
+	var fileName = value
 	if fileName == "":
 		print("Error: no filename specified")
 		return
@@ -269,11 +293,3 @@ func _on_load_button_pressed():
 	
 	for card in draftDeck.cards:
 		add_to_deck_container(card)
-
-func get_text_content() -> String:
-	var text = get_node_or_null("CanvasLayer/FileName")
-	if text.text == null:
-		print("Error: please specify a file name")
-		return ""
-		
-	return text.text

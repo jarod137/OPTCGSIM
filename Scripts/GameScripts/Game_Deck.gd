@@ -3,19 +3,20 @@ extends Control
 var deck = []
 
 var cardScene = preload("res://Scenes/Game/DeckContainer.tscn")
+@onready var popUpLoad = preload("res://Scenes/DeckBuilder/PopUpSave.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	load_deck()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func load_deck():
+func load_deck(filename: String):
 	var game_deck = Player_Deck.new()
 	
-	game_deck.read_JSON()
+	game_deck.read_JSON(filename)
 	deck = game_deck.get_cards()
 	
 	set_leader_container(game_deck.leader)
@@ -68,3 +69,10 @@ func set_deck_container(info):
 	
 func _on_texture_button_pressed(info):
 	print(info)
+
+func _on_pressed() -> void:
+	var popup_instance = popUpLoad.instantiate()
+	add_child(popup_instance)
+	popup_instance.position = get_viewport().size / 2
+	
+	popup_instance.value_selected.connect(load_deck)

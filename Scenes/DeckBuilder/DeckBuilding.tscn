@@ -18,14 +18,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="FileName" type="LineEdit" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_right = 0.058214
-anchor_bottom = 0.0478395
-placeholder_text = "Enter a filename"
-expand_to_text_length = true
-metadata/_edit_use_anchors_ = true
-
 [node name="Container" type="Container" parent="CanvasLayer"]
 custom_minimum_size = Vector2(168, 238)
 anchors_preset = -1

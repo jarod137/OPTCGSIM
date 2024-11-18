@@ -22,3 +22,7 @@ func _on_win_pressed() -> void:
 
 func _on_lose_pressed() -> void:
 	get_tree().change_scene_to_file("res://Loss.tscn")
+
+
+func _on_load_deck_button_pressed() -> void:
+	pass # Replace with function body.
