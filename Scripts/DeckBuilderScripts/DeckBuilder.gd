@@ -189,8 +189,13 @@ func _on_button_2_pressed():
 
 func _on_save_button_pressed():
 	print("Save button pressed")
+	var filename = get_text_content()
+	if filename == "":
+		print("Error: no filename is specified")
+		return
+	
 	if draftDeck.has_leader() == true && (draftDeck.get_cards().size() <= 50):
-		draftDeck.save_to_JSON()
+		draftDeck.save_to_JSON(filename)
 
 func _on_previous_button_pressed():
 	if current_page < 1:
@@ -227,15 +232,18 @@ func _on_option_button_item_selected(index):
 	option_node.selected = index
 	populate_UI(min_index, max_index, currentSearch)
 
-
 func _on_line_edit_text_submitted(new_text):
 	currentSearch = new_text
 	var min_index = current_page * cards_per_page
 	var max_index = min_index + cards_per_page
 	populate_UI(min_index, max_index, currentSearch)
 
-
 func _on_load_button_pressed():
+	var fileName = get_text_content()
+	if fileName == "":
+		print("Error: no filename specified")
+		return
+	
 	var leader_node = get_node_or_null("CanvasLayer/Container")
 	if not leader_node:
 		print("Error: leader node not found")
@@ -252,7 +260,7 @@ func _on_load_button_pressed():
 	for child in deck_node.get_children():
 		child.queue_free()
 	
-	draftDeck.read_JSON()
+	draftDeck.read_JSON(fileName)
 	
 	if !draftDeck.leader == null:
 		add_to_leader_container(draftDeck.leader)
@@ -261,3 +269,11 @@ func _on_load_button_pressed():
 	
 	for card in draftDeck.cards:
 		add_to_deck_container(card)
+
+func get_text_content() -> String:
+	var text = get_node_or_null("CanvasLayer/FileName")
+	if text.text == null:
+		print("Error: please specify a file name")
+		return ""
+		
+	return text.text

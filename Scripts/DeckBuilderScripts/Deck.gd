@@ -55,9 +55,11 @@ func max_cards_reached() -> bool:
 		
 	return false
 	
-func save_to_JSON() -> void:
-	var deckSave = "res://Assets/SaveData/save.json"
-	var saveFile = FileAccess.open(deckSave, FileAccess.WRITE)
+func save_to_JSON(filename: String) -> void:
+	var deckSave = "res://Assets/SaveData/"
+	var completeFileName = deckSave + filename + ".json"
+	
+	var saveFile = FileAccess.open(completeFileName, FileAccess.WRITE)
 	
 	var save_dict = {
 		"Leader": leader,
@@ -68,12 +70,14 @@ func save_to_JSON() -> void:
 	saveFile.store_string(json_string)
 	saveFile.close()
 
-func read_JSON() -> void:
-	var deckSave = "res://Assets/SaveData/save.json"
-	var fileExists = FileAccess.file_exists(deckSave)
+func read_JSON(filename: String) -> void:
+	var deckSave = "res://Assets/SaveData/"
+	var completeFileName = deckSave + filename + ".json"
+		
+	var fileExists = FileAccess.file_exists(completeFileName)
 	
 	if fileExists:
-		var file = FileAccess.open(deckSave, FileAccess.READ)
+		var file = FileAccess.open(completeFileName, FileAccess.READ)
 		var fileContents = file.get_as_text()
 		
 		var result = json.parse(fileContents)
