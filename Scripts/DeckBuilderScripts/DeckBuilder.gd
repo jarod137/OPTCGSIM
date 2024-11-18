@@ -11,12 +11,13 @@ var deck = []
 
 var draftDeck
 
-# IMPORTANT: Change this to load if the scene is showing as corrupted
 var deckBuilderScene = preload("res://Scenes/DeckBuilder/DeckBuilding.tscn")
 var cardScene = preload("res://Scenes/DeckBuilder/DeckBuildContainer.tscn")
 
-var currentOption = "ALL"
+@onready var popupScene = preload("res://Scenes/DeckBuilder/PopUpLoad.tscn")
+@onready var popUpSave = preload("res://Scenes/DeckBuilder/PopUpSave.tscn")
 
+var currentOption = "ALL"
 var currentSearch = ""
 
 func _ready():
@@ -79,7 +80,7 @@ func populate_UI(min_index: int = 0, max_index: int = 6, search: String = ""):
 							var texture = load(img_path) as Texture2D
 							btn_node.texture_normal = texture
 						
-					btn_node.pressed.connect(_on_texture_button_pressed.bind(card_info, card_instance))	
+					btn_node.pressed.connect(_on_texture_button_pressed.bind(card_info, card_instance))
 					grid_container.add_child(card_instance)
 					cardCount += 1
 			else:
@@ -96,8 +97,6 @@ func populate_UI(min_index: int = 0, max_index: int = 6, search: String = ""):
 			
 		
 		index += 1
-
-	#add_child(deck_instance)
 	
 func _on_texture_button_pressed(info, instance) -> void:
 	print("Button pressed for: ", info["name"])
@@ -191,8 +190,21 @@ func _on_button_2_pressed():
 
 func _on_save_button_pressed():
 	print("Save button pressed")
+	
+	var popup_instance = popUpSave.instantiate()
+	add_child(popup_instance)
+	popup_instance.position = get_viewport().size / 2
+	
+	popup_instance.value_selected.connect(_on_save_popup_value_selected)
+	
+		
+func _on_save_popup_value_selected(filename):
+	if filename == "":
+		print("Error: no filename is specified")
+		return
+	
 	if draftDeck.has_leader() == true && (draftDeck.get_cards().size() <= 50):
-		draftDeck.save_to_JSON()
+		draftDeck.save_to_JSON(filename)
 
 func _on_previous_button_pressed():
 	if current_page < 1:
@@ -229,15 +241,33 @@ func _on_option_button_item_selected(index):
 	option_node.selected = index
 	populate_UI(min_index, max_index, currentSearch)
 
-
 func _on_line_edit_text_submitted(new_text):
 	currentSearch = new_text
 	var min_index = current_page * cards_per_page
 	var max_index = min_index + cards_per_page
 	populate_UI(min_index, max_index, currentSearch)
 
-
 func _on_load_button_pressed():
+	var popup_instance = popupScene.instantiate()
+	add_child(popup_instance)
+	popup_instance.position = get_viewport().size / 2
+	
+	popup_instance.value_selected.connect(_on_load_popup_value_selected)
+
+func get_text_content() -> String:
+	var text = get_node_or_null("CanvasLayer/FileName")
+	if text.text == null:
+		print("Error: please specify a file name")
+		return ""
+		
+	return text.text
+
+func _on_load_popup_value_selected(value: String) -> void:
+	var fileName = value
+	if fileName == "":
+		print("Error: no filename specified")
+		return
+	
 	var leader_node = get_node_or_null("CanvasLayer/Container")
 	if not leader_node:
 		print("Error: leader node not found")
@@ -254,7 +284,7 @@ func _on_load_button_pressed():
 	for child in deck_node.get_children():
 		child.queue_free()
 	
-	draftDeck.read_JSON()
+	draftDeck.read_JSON(fileName)
 	
 	if !draftDeck.leader == null:
 		add_to_leader_container(draftDeck.leader)
