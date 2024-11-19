@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://085m0pgrbo2t"]
+[gd_scene load_steps=9 format=3 uid="uid://085m0pgrbo2t"]
 
 [ext_resource type="Script" path="res://Scenes/Game/world.gd" id="1_0xtuj"]
 [ext_resource type="PackedScene" uid="uid://deotsx23pqaeq" path="res://Scenes/Game/card.tscn" id="1_imruo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardPlacement.gd" id="3_yxjxn"]
 [ext_resource type="Script" path="res://Scenes/Game/don_deck.gd" id="5_ftllk"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardPlacement2.gd" id="5_olwlw"]
+[ext_resource type="Theme" uid="uid://gmjysn315cso" path="res://Assets/Buttons/DefaultButton.tres" id="7_8tgfj"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/Game_Deck.gd" id="7_kk811"]
 
 [node name="Board" type="Node"]
@@ -127,6 +128,7 @@ offset_left = 1017.0
 offset_top = 242.0
 offset_right = 1151.0
 offset_bottom = 318.0
+theme = ExtResource("7_8tgfj")
 text = "End Turn"
 
 [node name="StartTurnButton" type="Button" parent="UI/Player1"]
@@ -135,6 +137,7 @@ offset_left = 1016.0
 offset_top = 159.0
 offset_right = 1150.0
 offset_bottom = 235.0
+theme = ExtResource("7_8tgfj")
 text = "StartTurn
 "
 
@@ -144,6 +147,7 @@ offset_left = 1014.0
 offset_top = 74.0
 offset_right = 1148.0
 offset_bottom = 150.0
+theme = ExtResource("7_8tgfj")
 text = "Load Deck"
 
 [node name="Player2" type="Control" parent="UI"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cklsrsty1xv8d"]
+[gd_scene load_steps=3 format=3 uid="uid://cklsrsty1xv8d"]
 
 [ext_resource type="Script" path="res://Scripts/DeckBuilderScripts/DeckBuilder.gd" id="2_662or"]
+[ext_resource type="Theme" uid="uid://gmjysn315cso" path="res://Assets/Buttons/DefaultButton.tres" id="2_in4p7"]
 
 [node name="DeckBuilding" type="Control"]
 layout_mode = 3
@@ -81,6 +82,7 @@ size_flags_horizontal = 4
 [node name="LineEdit" type="LineEdit" parent="CanvasLayer/Filter"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("2_in4p7")
 placeholder_text = "Search"
 clear_button_enabled = true
 
@@ -88,6 +90,7 @@ clear_button_enabled = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("2_in4p7")
 selected = 0
 item_count = 5
 popup/item_0/text = "ALL"
@@ -113,27 +116,32 @@ alignment = 1
 [node name="MenuButton" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("2_in4p7")
 text = "Main Menu"
 
 [node name="PreviousButton" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("2_in4p7")
 text = "Previous page"
 
 [node name="NextButton" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("2_in4p7")
 text = "Next page"
 expand_icon = true
 
 [node name="SaveButton" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("2_in4p7")
 text = "Save Deck"
 
 [node name="LoadButton" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("2_in4p7")
 text = "Load Saved Deck"
 
 [connection signal="text_submitted" from="CanvasLayer/Filter/LineEdit" to="." method="_on_line_edit_text_submitted"]
