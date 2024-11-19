@@ -1,5 +1,6 @@
 extends Control
 
+var cardCount = 0
 
 var count: int
 @onready var card = preload("res://Scenes/Game/cardonBoard.tscn")
@@ -12,9 +13,7 @@ func _on_mouse_exited():
 	Game.mouseOnPlacement = false
 
 
-
 func placeCard():
-	var cardCount = 0
 	if cardCount < 5:
 		cardCount += 1
 		var cardTemp = card.instantiate()

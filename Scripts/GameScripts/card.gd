@@ -52,16 +52,6 @@ func keyword_check():
 		pass
 	elif card.text.contains("Banish"):
 		pass
-	elif card.text.contains("OnPlay"):
-		pass
-	elif card.text.contains("WhenAttacking"):
-		pass
-	elif card.text.contains("OnBlock"):
-		pass
-	elif card.text.contains("Don x"):
-		pass
-	elif card.text.contains("Don -"):
-		pass
 	elif card.text.contains("Blocker"):
 		pass
 	else:
