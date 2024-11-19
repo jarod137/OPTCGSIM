@@ -90,10 +90,10 @@ offset_bottom = 179.0
 
 [node name="TrashZone" type="HBoxContainer" parent="UI/Player1"]
 layout_mode = 0
-offset_left = 917.0
-offset_top = 91.0
-offset_right = 988.0
-offset_bottom = 193.0
+offset_left = 925.0
+offset_top = 104.0
+offset_right = 996.0
+offset_bottom = 206.0
 
 [node name="LeaderZone" type="HBoxContainer" parent="UI/Player1"]
 layout_mode = 0
