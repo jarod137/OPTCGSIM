@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxtm6mx3b7xqf"]
+[gd_scene load_steps=3 format=3 uid="uid://bxtm6mx3b7xqf"]
 
 [ext_resource type="Script" path="res://Scripts/DeckBuilderScripts/PopUpSave.gd" id="1_1e0qo"]
+[ext_resource type="Theme" uid="uid://gmjysn315cso" path="res://Assets/Buttons/DefaultButton.tres" id="2_n4qyu"]
 
 [node name="popupWindow" type="Window"]
 position = Vector2i(0, 36)
@@ -19,6 +20,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="LineEdit" type="LineEdit" parent="MarginContainer"]
 layout_mode = 2
+theme = ExtResource("2_n4qyu")
 placeholder_text = "File name to load"
 expand_to_text_length = true
 metadata/_edit_use_anchors_ = true
@@ -44,11 +46,13 @@ size_flags_horizontal = 3
 [node name="cancel_button" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("2_n4qyu")
 text = "Cancel"
 
 [node name="done_button" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("2_n4qyu")
 text = "Done"
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
