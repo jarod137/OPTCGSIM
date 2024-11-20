@@ -1,6 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://cklsrsty1xv8d"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" path="res://Scripts/DeckBuilder.gd" id="2_662or"]
+=======
+[ext_resource type="Script" path="res://Scripts/DeckBuilderScripts/DeckBuilder.gd" id="2_662or"]
+>>>>>>> parent of 9f87828 (fixed buttons)
 
 [node name="DeckBuilding" type="Control"]
 layout_mode = 3

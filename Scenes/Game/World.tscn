@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=7 format=3 uid="uid://085m0pgrbo2t"]
+=======
+[gd_scene load_steps=8 format=3 uid="uid://085m0pgrbo2t"]
+>>>>>>> parent of 9f87828 (fixed buttons)
 
 [ext_resource type="Script" path="res://Scenes/Game/world.gd" id="1_0xtuj"]
 [ext_resource type="PackedScene" uid="uid://deotsx23pqaeq" path="res://Scenes/Game/card.tscn" id="1_imruo"]
@@ -6,6 +10,10 @@
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardPlacement.gd" id="3_yxjxn"]
 [ext_resource type="Script" path="res://Scenes/Game/don_deck.gd" id="5_ftllk"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardPlacement2.gd" id="5_olwlw"]
+<<<<<<< HEAD
+=======
+[ext_resource type="Script" path="res://Scripts/GameScripts/Game_Deck.gd" id="7_kk811"]
+>>>>>>> parent of 9f87828 (fixed buttons)
 
 [node name="Board" type="Node"]
 script = ExtResource("1_0xtuj")
@@ -133,6 +141,17 @@ offset_bottom = 235.0
 text = "StartTurn
 "
 
+<<<<<<< HEAD
+=======
+[node name="LoadDeckButton" type="Button" parent="UI/Player1"]
+layout_mode = 0
+offset_left = 1014.0
+offset_top = 74.0
+offset_right = 1148.0
+offset_bottom = 150.0
+text = "Load Deck"
+
+>>>>>>> parent of 9f87828 (fixed buttons)
 [node name="Player2" type="Control" parent="UI"]
 layout_mode = 3
 anchor_bottom = 0.5
