@@ -37,6 +37,8 @@ func _player_disconnected():
 
 func _connected_ok():
 	print("it worked!!!")
+	get_tree().change_scene_to_file("res://Scenes/Game/World.tscn")
+	
 func _connected_fail():
 	print("failed to connect...")
 func _server_disconnected():
