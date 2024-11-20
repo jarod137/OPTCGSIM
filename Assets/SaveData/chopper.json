@@ -1,0 +1,32 @@
+{
+	"Cards": [
+		{
+			"attribute": "Special",
+			"cardNo": 1,
+			"color": "Red",
+			"cost": "7",
+			"counter": "-",
+			"effect": "Effect[On Play] Give up to 2 of your opponent's Characters −3000 power during this turn. Then, if your Leader's type includes \"Whitebeard Pirates\", this Character gains [Rush] during this turn.(This card can attack on the turn in which it is played.)",
+			"imgPath": "res://Assets/Cards/1.png",
+			"info": "CHARACTER",
+			"name": "Portgas.D.Ace",
+			"power": "7000",
+			"set": "Card Set(s)-TWO LEGENDS- [OP-08]",
+			"type": "Whitebeard Pirates"
+		}
+	],
+	"Leader": {
+		"attribute": "Strike",
+		"cardNo": 4,
+		"color": "Red/Green",
+		"cost": "Life4",
+		"counter": "-",
+		"effect": "Effect[Activate: Main] [Once Per Turn] Give up to 3 of your {Animal} or {Drum Kingdom} type Characters up to 1 rested DON!! card each.",
+		"imgPath": "res://Assets/Cards/4.png",
+		"info": "LEADER",
+		"name": "Tony Tony.Chopper",
+		"power": "5000",
+		"set": "Card Set(s)-TWO LEGENDS- [OP-08]",
+		"type": "Animal/Drum Kingdom/Straw Hat Crew"
+	}
+}
