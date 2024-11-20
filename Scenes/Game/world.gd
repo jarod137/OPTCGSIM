@@ -1,5 +1,8 @@
 extends Node
 
+#need this for networking
+signal game_finished()
+
 var turncount = 0
 
 func _on_back_pressed() -> void:

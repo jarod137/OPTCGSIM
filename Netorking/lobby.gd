@@ -20,15 +20,19 @@ func _ready() -> void:
 	multiplayer.connection_failed.connect(_connected_fail)
 	multiplayer.server_disconnected.connect(_server_disconnected)
 
+func _player_connected(_id):
+	if multiplayer.is_server():
+		print("Player 1 connected")
+	else:
+		print("Player 2 connected")
+	get_tree().change_scene_to_file("res://Scenes/Game/World.tscn")
+	#var sim = load("res://Scenes/Game/World.tscn").instantiate()
+	# Connect deferred so we can safely erase it from the callback.
+	#sim.game_finished.connect(_end_game, CONNECT_DEFERRED)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-#	server polling should happen here
-	#socket.poll()
-	pass
-
-func _player_connected():
-	print("player connected!")
+	#get_tree().get_root().add_child(sim)
+	hide()
+	
 func _player_disconnected():
 	if multiplayer.is_server():
 		print("Client disconnected")
@@ -37,16 +41,30 @@ func _player_disconnected():
 
 func _connected_ok():
 	print("it worked!!!")
-	get_tree().change_scene_to_file("res://Scenes/Game/World.tscn")
+	#get_tree().change_scene_to_file("res://Scenes/Game/World.tscn")
+	#var sim = load("res://Scenes/Game/World.tscn").instantiate()
 	
 func _connected_fail():
 	print("failed to connect...")
+	
 func _server_disconnected():
 	print("server disconnected...")
 
+#we need this apparently
+func _end_game():
+	if has_node("/root/Board"):
+		# Erase immediately, otherwise network might show
+		# errors (this is why we connected deferred above).
+		get_node(^"/root/Board").free()
+		show()
+
+	multiplayer.set_multiplayer_peer(null) # Remove peer.
+	btn_host.set_disabled(false)
+	btn_join.set_disabled(false)
+
 
 func _on_back_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Options/options_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Menu/menu.tscn")
 
 #create server on button press
 func _on_btn_host_pressed() -> void:

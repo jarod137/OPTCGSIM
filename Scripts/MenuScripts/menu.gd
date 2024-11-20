@@ -10,7 +10,8 @@ func _ready() -> void:
 
 func _on_play_pressed() -> void:
 	$ButtonSound.play()
-	get_tree().change_scene_to_file("res://Scenes/Game/World.tscn")
+	#go to network option first
+	get_tree().change_scene_to_file("res://Netorking/lobby.tscn")
 
 func _on_deck_builder_pressed() -> void:
 	$ButtonSound.play()

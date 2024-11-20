@@ -68,7 +68,7 @@ func save_to_JSON(filename: String) -> void:
 	}
 	
 	var json_string = JSON.stringify(save_dict, "\t")
-	saveFile.store_string(json_string)
+	saveFile.store_string(json_string) #TODO: broken
 	saveFile.close()
 
 func read_JSON(filename: String) -> void:
