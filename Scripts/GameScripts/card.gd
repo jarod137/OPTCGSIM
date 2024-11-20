@@ -5,11 +5,6 @@ extends Container
 var startPosition
 var cardHighlighted = false
 var isRested = false
-var isDon = false
-var isLeader = false
-var isCharacter = false
-var isStage = false
-var isEvent = false
 
 func _ready():
 	startPosition = self.position
@@ -51,6 +46,16 @@ func keyword_check():
 	elif card.text.contains("DoubleAttack"):
 		pass
 	elif card.text.contains("Banish"):
+		pass
+	elif card.text.contains("OnPlay"):
+		pass
+	elif card.text.contains("WhenAttacking"):
+		pass
+	elif card.text.contains("OnBlock"):
+		pass
+	elif card.text.contains("Don x"):
+		pass
+	elif card.text.contains("Don -"):
 		pass
 	elif card.text.contains("Blocker"):
 		pass

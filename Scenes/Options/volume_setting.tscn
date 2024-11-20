@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cq25s8crijra0"]
+[gd_scene load_steps=3 format=3 uid="uid://cq25s8crijra0"]
 
 [ext_resource type="PackedScene" uid="uid://dut33q0pj48dr" path="res://Scenes/Options/h_slider.tscn" id="1_bnd44"]
 [ext_resource type="Script" path="res://Scenes/Options/volume_setting.gd" id="1_jfjvr"]
-[ext_resource type="Theme" uid="uid://gmjysn315cso" path="res://Assets/Buttons/DefaultButton.tres" id="3_w7o0h"]
 
 [node name="VolumeSetting" type="Control"]
 layout_mode = 3
@@ -52,12 +51,10 @@ text = "SFX Volume"
 
 [node name="sfx" parent="HBoxContainer/PanelContainer/VBoxContainer" instance=ExtResource("1_bnd44")]
 layout_mode = 2
-theme = ExtResource("3_w7o0h")
 bus_name = "sfx"
 
 [node name="Button" type="Button" parent="HBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("3_w7o0h")
 text = "Back"
 
 [connection signal="pressed" from="HBoxContainer/PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

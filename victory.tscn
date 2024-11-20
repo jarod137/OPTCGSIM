@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://vxca7ymlvjhb"]
+[gd_scene load_steps=2 format=3 uid="uid://vxca7ymlvjhb"]
 
 [ext_resource type="Script" path="res://victoryScreen.gd" id="1_wkxge"]
-[ext_resource type="Theme" uid="uid://gmjysn315cso" path="res://Assets/Buttons/DefaultButton.tres" id="2_5x1b2"]
 
 [node name="Victory" type="Control"]
 layout_mode = 3
@@ -22,7 +21,6 @@ offset_bottom = 289.0
 
 [node name="Button" type="Button" parent="UI/HBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_5x1b2")
 text = "Back
 "
 

@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cklsrsty1xv8d"]
+[gd_scene load_steps=2 format=3 uid="uid://cklsrsty1xv8d"]
 
-[ext_resource type="Script" path="res://Scripts/DeckBuilderScripts/DeckBuilder.gd" id="2_662or"]
-[ext_resource type="Theme" uid="uid://gmjysn315cso" path="res://Assets/Buttons/DefaultButton.tres" id="2_in4p7"]
+[ext_resource type="Script" path="res://Scripts/DeckBuilder.gd" id="2_662or"]
 
 [node name="DeckBuilding" type="Control"]
 layout_mode = 3
@@ -82,7 +81,6 @@ size_flags_horizontal = 4
 [node name="LineEdit" type="LineEdit" parent="CanvasLayer/Filter"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("2_in4p7")
 placeholder_text = "Search"
 clear_button_enabled = true
 
@@ -90,7 +88,6 @@ clear_button_enabled = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("2_in4p7")
 selected = 0
 item_count = 5
 popup/item_0/text = "ALL"
@@ -116,33 +113,38 @@ alignment = 1
 [node name="MenuButton" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("2_in4p7")
 text = "Main Menu"
 
 [node name="PreviousButton" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("2_in4p7")
 text = "Previous page"
 
 [node name="NextButton" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("2_in4p7")
 text = "Next page"
 expand_icon = true
 
 [node name="SaveButton" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("2_in4p7")
 text = "Save Deck"
 
 [node name="LoadButton" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("2_in4p7")
 text = "Load Saved Deck"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer"]
+offset_right = 126.0
+offset_bottom = 40.0
+
+[node name="DeckName" type="LineEdit" parent="CanvasLayer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Deck Name"
+clear_button_enabled = true
 
 [connection signal="text_submitted" from="CanvasLayer/Filter/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="item_selected" from="CanvasLayer/Filter/OptionButton" to="." method="_on_option_button_item_selected"]
@@ -151,3 +153,4 @@ text = "Load Saved Deck"
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/NextButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="text_submitted" from="CanvasLayer/HBoxContainer2/DeckName" to="." method="_on_deck_name_text_submitted"]

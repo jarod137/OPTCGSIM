@@ -5,12 +5,7 @@ var isRested = false
 
 func setUpDon():
 	for i in 10:
-		var cardTemp = card.instantiate()
-		# $Card.isDon = true
-		var projectResolution = ProjectSettings.get_setting("display/window/size/viewport_width")
-		var projectResolutionHeight = ProjectSettings.get_setting("display/window/size/viewport_height")
-		cardTemp.global_position = Vector2(projectResolution/4, projectResolutionHeight)
-		add_child(cardTemp)
+		card.instantiate()
 
 func setActive():
 	$Anim.play("Active")
@@ -21,5 +16,4 @@ func setRested():
 	isRested = true
 
 func donDraw():
-	#$Anim.play("face_up")
-	pass
+	$Anim.play("face_up")

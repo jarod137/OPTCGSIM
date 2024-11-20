@@ -29,6 +29,7 @@ func set_leader(newLeader) -> void:
 	else:
 		print("Error: something went wrong")
 		
+# TODO: needs to be tested
 func remove_leader() -> bool:
 	leader = null
 	leaderColor = null
@@ -38,6 +39,7 @@ func remove_leader() -> bool:
 	else:
 		return false
 		
+# TODO: needs to implement a check for max amount of cards
 func add_to_deck(card) -> void:
 	if has_leader() == false:
 		print("Error: cannot add until you select a leader.")
@@ -55,12 +57,9 @@ func max_cards_reached() -> bool:
 		
 	return false
 	
-func save_to_JSON(filename: String) -> void:
-	var deckSave = "res://Assets/SaveData/"
-	var completeFileName = deckSave + filename + ".json"
-	print("Saving: ", completeFileName)
-	
-	var saveFile = FileAccess.open(completeFileName, FileAccess.WRITE)
+func save_to_JSON() -> void:
+	var deckSave = "res://Assets/SaveData/save.json"
+	var saveFile = FileAccess.open(deckSave, FileAccess.WRITE)
 	
 	var save_dict = {
 		"Leader": leader,
@@ -71,14 +70,13 @@ func save_to_JSON(filename: String) -> void:
 	saveFile.store_string(json_string)
 	saveFile.close()
 
-func read_JSON(filename: String) -> void:
-	var deckSave = "res://Assets/SaveData/"
-	var completeFileName = deckSave + filename + ".json"
-		
-	var fileExists = FileAccess.file_exists(completeFileName)
+# TODO: needs to be implemented && needs corresponding button
+func read_JSON() -> void:
+	var deckSave = "res://Assets/SaveData/save.json"
+	var fileExists = FileAccess.file_exists(deckSave)
 	
 	if fileExists:
-		var file = FileAccess.open(completeFileName, FileAccess.READ)
+		var file = FileAccess.open(deckSave, FileAccess.READ)
 		var fileContents = file.get_as_text()
 		
 		var result = json.parse(fileContents)
@@ -113,6 +111,10 @@ func get_cards() -> Array:
 func _init():
 	leader = null
 	print("constructed", self)
+	
+func init_JSON():
+	if json == null:
+		json = JSON.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,0 +1,102 @@
+{
+	"Cards": [
+		{
+			"attribute": "Special",
+			"cardNo": 32,
+			"color": "Green",
+			"cost": "5",
+			"counter": "1000",
+			"effect": "Effect[On Play]/[When Attacking] Up to 1 of your opponent's rested Characters with a cost of 7 or less will not become active in your opponent's next Refresh Phase.",
+			"imgPath": "res://Assets/Cards/32.png",
+			"info": "CHARACTER",
+			"name": "Carrot",
+			"power": "6000",
+			"set": "Card Set(s)-TWO LEGENDS- [OP-08]",
+			"type": "Minks"
+		},
+		{
+			"attribute": "Special",
+			"cardNo": 32,
+			"color": "Green",
+			"cost": "5",
+			"counter": "1000",
+			"effect": "Effect[On Play]/[When Attacking] Up to 1 of your opponent's rested Characters with a cost of 7 or less will not become active in your opponent's next Refresh Phase.",
+			"imgPath": "res://Assets/Cards/32.png",
+			"info": "CHARACTER",
+			"name": "Carrot",
+			"power": "6000",
+			"set": "Card Set(s)-TWO LEGENDS- [OP-08]",
+			"type": "Minks"
+		},
+		{
+			"attribute": "Slash",
+			"cardNo": 33,
+			"color": "Green",
+			"cost": "3",
+			"counter": "1000",
+			"effect": "Effect[When Attacking] Up to 1 of your opponent's rested Characters with a cost of 4 or less will not become active in your opponent's next Refresh Phase.",
+			"imgPath": "res://Assets/Cards/33.png",
+			"info": "CHARACTER",
+			"name": "Concelot",
+			"power": "4000",
+			"set": "Card Set(s)-TWO LEGENDS- [OP-08]",
+			"type": "Minks"
+		},
+		{
+			"attribute": "Slash",
+			"cardNo": 33,
+			"color": "Green",
+			"cost": "3",
+			"counter": "1000",
+			"effect": "Effect[When Attacking] Up to 1 of your opponent's rested Characters with a cost of 4 or less will not become active in your opponent's next Refresh Phase.",
+			"imgPath": "res://Assets/Cards/33.png",
+			"info": "CHARACTER",
+			"name": "Concelot",
+			"power": "4000",
+			"set": "Card Set(s)-TWO LEGENDS- [OP-08]",
+			"type": "Minks"
+		},
+		{
+			"attribute": "Slash",
+			"cardNo": 40,
+			"color": "Green",
+			"cost": "4",
+			"counter": "1000",
+			"effect": "Effect[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)[On K.O.] Choose one:• Rest up to 1 of your opponent's DON!! cards.• K.O. up to 1 of your opponent's rested Characters with a cost of 6 or less.",
+			"imgPath": "res://Assets/Cards/40.png",
+			"info": "CHARACTER",
+			"name": "Pedro",
+			"power": "5000",
+			"set": "Card Set(s)-TWO LEGENDS- [OP-08]",
+			"type": "Minks"
+		},
+		{
+			"attribute": "Slash",
+			"cardNo": 40,
+			"color": "Green",
+			"cost": "4",
+			"counter": "1000",
+			"effect": "Effect[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)[On K.O.] Choose one:• Rest up to 1 of your opponent's DON!! cards.• K.O. up to 1 of your opponent's rested Characters with a cost of 6 or less.",
+			"imgPath": "res://Assets/Cards/40.png",
+			"info": "CHARACTER",
+			"name": "Pedro",
+			"power": "5000",
+			"set": "Card Set(s)-TWO LEGENDS- [OP-08]",
+			"type": "Minks"
+		}
+	],
+	"Leader": {
+		"attribute": "Special",
+		"cardNo": 29,
+		"color": "Green",
+		"cost": "Life5",
+		"counter": "-",
+		"effect": "Effect[Activate: Main] [Once Per Turn] If you have a {Minks} type Character, rest up to 1 of your opponent's Characters with a cost of 5 or less.",
+		"imgPath": "res://Assets/Cards/29.png",
+		"info": "LEADER",
+		"name": "Carrot",
+		"power": "5000",
+		"set": "Card Set(s)-TWO LEGENDS- [OP-08]",
+		"type": "Minks"
+	}
+}

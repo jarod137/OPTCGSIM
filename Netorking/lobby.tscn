@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cg4s3kqg5rq88"]
+[gd_scene load_steps=2 format=3 uid="uid://cg4s3kqg5rq88"]
 
 [ext_resource type="Script" path="res://Netorking/lobby.gd" id="1_u7on4"]
-[ext_resource type="Theme" uid="uid://gmjysn315cso" path="res://Assets/Buttons/DefaultButton.tres" id="2_3kq2o"]
 
 [node name="Lobby" type="Control"]
 layout_mode = 3
@@ -38,7 +37,6 @@ text = "Set Network IP/URL"
 [node name="ip" type="LineEdit" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
-theme = ExtResource("2_3kq2o")
 text = "127.0.0.1"
 placeholder_text = "ex: 127.0.0.1, localhost"
 
@@ -52,18 +50,15 @@ layout_mode = 2
 [node name="btn_host" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("2_3kq2o")
 text = "Host"
 
 [node name="btn_join" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("2_3kq2o")
 text = "Join"
 
 [node name="back" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_3kq2o")
 text = "Back
 "
 
