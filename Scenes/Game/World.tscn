@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 [gd_scene load_steps=7 format=3 uid="uid://085m0pgrbo2t"]
+=======
+[gd_scene load_steps=8 format=3 uid="uid://085m0pgrbo2t"]
+>>>>>>> parent of 9f87828 (fixed buttons)
 =======
 [gd_scene load_steps=8 format=3 uid="uid://085m0pgrbo2t"]
 >>>>>>> parent of 9f87828 (fixed buttons)
@@ -11,7 +15,10 @@
 [ext_resource type="Script" path="res://Scenes/Game/don_deck.gd" id="5_ftllk"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardPlacement2.gd" id="5_olwlw"]
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 9f87828 (fixed buttons)
 [ext_resource type="Script" path="res://Scripts/GameScripts/Game_Deck.gd" id="7_kk811"]
 >>>>>>> parent of 9f87828 (fixed buttons)
 
