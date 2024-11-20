@@ -70,7 +70,6 @@ func save_to_JSON() -> void:
 	saveFile.store_string(json_string)
 	saveFile.close()
 
-# TODO: needs to be implemented && needs corresponding button
 func read_JSON() -> void:
 	var deckSave = "res://Assets/SaveData/save.json"
 	var fileExists = FileAccess.file_exists(deckSave)
