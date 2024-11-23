@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://085m0pgrbo2t"]
+[gd_scene load_steps=10 format=3 uid="uid://085m0pgrbo2t"]
 
 [ext_resource type="Script" path="res://Scenes/Game/world.gd" id="1_0xtuj"]
 [ext_resource type="PackedScene" uid="uid://deotsx23pqaeq" path="res://Scenes/Game/card.tscn" id="1_imruo"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardContainer.gd" id="1_xeshw"]
+[ext_resource type="Texture2D" uid="uid://l0kthwxtmx2g" path="res://Assets/playmat.png" id="2_21sj1"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardPlacement.gd" id="3_yxjxn"]
 [ext_resource type="Script" path="res://Scenes/Game/don_deck.gd" id="5_ftllk"]
 [ext_resource type="Script" path="res://Scripts/GameScripts/CardPlacement2.gd" id="5_olwlw"]
@@ -12,9 +13,24 @@
 [node name="Board" type="Node"]
 script = ExtResource("1_0xtuj")
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="CardHolder" type="Node" parent="."]
 
-[node name="Player1" type="Control" parent="UI"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Playmat" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(505.7, 174.039)
+rotation = -3.14159
+scale = Vector2(0.866314, 0.494121)
+texture = ExtResource("2_21sj1")
+
+[node name="Playmat2" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(521, 496.5)
+scale = Vector2(0.8908, 0.44687)
+texture = ExtResource("2_21sj1")
+
+[node name="UI" type="CanvasLayer" parent="CanvasLayer"]
+
+[node name="Player1" type="Control" parent="CanvasLayer/UI"]
 layout_mode = 3
 anchor_bottom = 0.5
 offset_left = 2.0
@@ -23,89 +39,90 @@ offset_right = 1148.0
 offset_bottom = 326.0
 script = ExtResource("7_kk811")
 
-[node name="Hand" type="HBoxContainer" parent="UI/Player1"]
+[node name="Hand" type="HBoxContainer" parent="CanvasLayer/UI/Player1"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = 258.0
-offset_top = 197.0
-offset_right = 788.0
-offset_bottom = 11.0
+offset_left = 297.0
+offset_top = 269.0
+offset_right = 827.0
+offset_bottom = 83.0
 grow_vertical = 2
 theme_override_constants/separation = -20
 alignment = 1
 script = ExtResource("1_xeshw")
 
-[node name="Card1" parent="UI/Player1/Hand" instance=ExtResource("1_imruo")]
+[node name="Card1" parent="CanvasLayer/UI/Player1/Hand" instance=ExtResource("1_imruo")]
 layout_mode = 2
 
-[node name="Card2" parent="UI/Player1/Hand" instance=ExtResource("1_imruo")]
+[node name="Card2" parent="CanvasLayer/UI/Player1/Hand" instance=ExtResource("1_imruo")]
 layout_mode = 2
 
-[node name="Card3" parent="UI/Player1/Hand" instance=ExtResource("1_imruo")]
+[node name="Card3" parent="CanvasLayer/UI/Player1/Hand" instance=ExtResource("1_imruo")]
 layout_mode = 2
 
-[node name="Card4" parent="UI/Player1/Hand" instance=ExtResource("1_imruo")]
+[node name="Card4" parent="CanvasLayer/UI/Player1/Hand" instance=ExtResource("1_imruo")]
 layout_mode = 2
 
-[node name="Card5" parent="UI/Player1/Hand" instance=ExtResource("1_imruo")]
+[node name="Card5" parent="CanvasLayer/UI/Player1/Hand" instance=ExtResource("1_imruo")]
 layout_mode = 2
 
-[node name="CardPlacement" type="Control" parent="UI/Player1"]
+[node name="CardPlacement" type="Control" parent="CanvasLayer/UI/Player1"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 186.0
-offset_top = 24.0
-offset_right = 944.0
-offset_bottom = 139.0
+offset_left = 235.0
+offset_top = 31.0
+offset_right = 1006.0
+offset_bottom = 125.0
 script = ExtResource("3_yxjxn")
 
-[node name="DonDeck" type="HBoxContainer" parent="UI/Player1"]
+[node name="DonDeck" type="HBoxContainer" parent="CanvasLayer/UI/Player1"]
 layout_mode = 0
-offset_left = 57.0
-offset_top = 220.0
-offset_right = 128.0
-offset_bottom = 305.0
+offset_left = 68.0
+offset_top = 223.0
+offset_right = 182.0
+offset_bottom = 308.0
 script = ExtResource("5_ftllk")
 
-[node name="LifeZone" type="HBoxContainer" parent="UI/Player1"]
+[node name="LifeZone" type="HBoxContainer" parent="CanvasLayer/UI/Player1"]
 layout_mode = 0
-offset_left = 962.0
-offset_top = -85.0
-offset_right = 1056.0
-offset_bottom = 80.0
+offset_left = 47.0
+offset_top = 55.0
+offset_right = 204.0
+offset_bottom = 180.0
 
-[node name="DonZone" type="HBoxContainer" parent="UI/Player1"]
+[node name="DonZone" type="HBoxContainer" parent="CanvasLayer/UI/Player1"]
 layout_mode = 0
-offset_left = 149.0
-offset_top = 210.0
-offset_right = 250.0
-offset_bottom = 308.0
+offset_left = 235.0
+offset_top = 214.0
+offset_right = 280.0
+offset_bottom = 312.0
 
-[node name="StageZone" type="HBoxContainer" parent="UI/Player1"]
+[node name="StageZone" type="HBoxContainer" parent="CanvasLayer/UI/Player1"]
 layout_mode = 0
-offset_left = 636.0
-offset_top = 71.0
-offset_right = 717.0
-offset_bottom = 179.0
+offset_left = 680.0
+offset_top = 133.0
+offset_right = 796.0
+offset_bottom = 215.0
 
-[node name="TrashZone" type="HBoxContainer" parent="UI/Player1"]
+[node name="TrashZone" type="HBoxContainer" parent="CanvasLayer/UI/Player1"]
 layout_mode = 0
-offset_left = 925.0
-offset_top = 104.0
-offset_right = 996.0
-offset_bottom = 206.0
+offset_left = 880.0
+offset_top = 226.0
+offset_right = 992.0
+offset_bottom = 309.0
 
-[node name="LeaderZone" type="HBoxContainer" parent="UI/Player1"]
-layout_mode = 0
-anchor_left = 0.697208
-anchor_top = 0.301242
-anchor_right = 0.768761
-anchor_bottom = 0.630435
+[node name="LeaderZone" type="HBoxContainer" parent="CanvasLayer/UI/Player1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.426702
+anchor_top = 0.428571
+anchor_right = 0.525305
+anchor_bottom = 0.68323
 offset_bottom = -1.52588e-05
 metadata/_edit_use_anchors_ = true
 
-[node name="Deck" type="Container" parent="UI/Player1"]
+[node name="Deck" type="Container" parent="CanvasLayer/UI/Player1"]
 layout_mode = 0
 anchor_left = 0.797557
 anchor_top = 0.65528
@@ -113,7 +130,7 @@ anchor_right = 0.870855
 anchor_bottom = 0.97205
 metadata/_edit_use_anchors_ = true
 
-[node name="back" type="Button" parent="UI/Player1"]
+[node name="back" type="Button" parent="CanvasLayer/UI/Player1"]
 layout_mode = 0
 offset_left = -2.0
 offset_top = 284.0
@@ -122,7 +139,7 @@ offset_bottom = 320.0
 text = "back"
 metadata/_edit_use_anchors_ = true
 
-[node name="EndTurnButton" type="Button" parent="UI/Player1"]
+[node name="EndTurnButton" type="Button" parent="CanvasLayer/UI/Player1"]
 layout_mode = 0
 offset_left = 1017.0
 offset_top = 242.0
@@ -131,7 +148,7 @@ offset_bottom = 318.0
 theme = ExtResource("7_8tgfj")
 text = "End Turn"
 
-[node name="StartTurnButton" type="Button" parent="UI/Player1"]
+[node name="StartTurnButton" type="Button" parent="CanvasLayer/UI/Player1"]
 layout_mode = 0
 offset_left = 1016.0
 offset_top = 159.0
@@ -141,7 +158,7 @@ theme = ExtResource("7_8tgfj")
 text = "StartTurn
 "
 
-[node name="LoadDeckButton" type="Button" parent="UI/Player1"]
+[node name="LoadDeckButton" type="Button" parent="CanvasLayer/UI/Player1"]
 layout_mode = 0
 offset_left = 1014.0
 offset_top = 74.0
@@ -150,7 +167,7 @@ offset_bottom = 150.0
 theme = ExtResource("7_8tgfj")
 text = "Load Deck"
 
-[node name="Player2" type="Control" parent="UI"]
+[node name="Player2" type="Control" parent="CanvasLayer/UI"]
 layout_mode = 3
 anchor_bottom = 0.5
 offset_left = 1151.0
@@ -159,7 +176,7 @@ offset_right = 2297.0
 offset_bottom = 322.0
 rotation = 3.14159
 
-[node name="Hand" type="HBoxContainer" parent="UI/Player2"]
+[node name="Hand" type="HBoxContainer" parent="CanvasLayer/UI/Player2"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -173,111 +190,109 @@ theme_override_constants/separation = -20
 alignment = 1
 script = ExtResource("5_olwlw")
 
-[node name="Card1" parent="UI/Player2/Hand" instance=ExtResource("1_imruo")]
+[node name="Card1" parent="CanvasLayer/UI/Player2/Hand" instance=ExtResource("1_imruo")]
 layout_mode = 2
 
-[node name="Card2" parent="UI/Player2/Hand" instance=ExtResource("1_imruo")]
+[node name="Card2" parent="CanvasLayer/UI/Player2/Hand" instance=ExtResource("1_imruo")]
 layout_mode = 2
 
-[node name="Card3" parent="UI/Player2/Hand" instance=ExtResource("1_imruo")]
+[node name="Card3" parent="CanvasLayer/UI/Player2/Hand" instance=ExtResource("1_imruo")]
 layout_mode = 2
 
-[node name="Card4" parent="UI/Player2/Hand" instance=ExtResource("1_imruo")]
+[node name="Card4" parent="CanvasLayer/UI/Player2/Hand" instance=ExtResource("1_imruo")]
 layout_mode = 2
 
-[node name="Card5" parent="UI/Player2/Hand" instance=ExtResource("1_imruo")]
+[node name="Card5" parent="CanvasLayer/UI/Player2/Hand" instance=ExtResource("1_imruo")]
 layout_mode = 2
 
-[node name="CardPlacement" type="Control" parent="UI/Player2"]
+[node name="CardPlacement" type="Control" parent="CanvasLayer/UI/Player2"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 193.0
-offset_top = 23.0005
-offset_right = 951.0
-offset_bottom = 138.0
+offset_left = 363.0
+offset_top = -10.9991
+offset_right = 1121.0
+offset_bottom = 104.0
 script = ExtResource("5_olwlw")
 
-[node name="DonDeck" type="HBoxContainer" parent="UI/Player2"]
+[node name="DonDeck" type="HBoxContainer" parent="CanvasLayer/UI/Player2"]
 layout_mode = 0
-offset_left = 57.0
-offset_top = 220.0
-offset_right = 128.0
-offset_bottom = 305.0
+offset_left = 205.0
+offset_top = 209.0
+offset_right = 319.0
+offset_bottom = 300.0
 
-[node name="LifeZone" type="HBoxContainer" parent="UI/Player2"]
+[node name="LifeZone" type="HBoxContainer" parent="CanvasLayer/UI/Player2"]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 22.0
-offset_right = 116.0
-offset_bottom = 187.0
+offset_left = 181.0
+offset_top = 24.0
+offset_right = 341.0
+offset_bottom = 167.0
 
-[node name="DonZone" type="HBoxContainer" parent="UI/Player2"]
+[node name="DonZone" type="HBoxContainer" parent="CanvasLayer/UI/Player2"]
 layout_mode = 0
-offset_left = 187.0
-offset_top = 214.0
-offset_right = 356.0
-offset_bottom = 312.0
+offset_left = 845.999
+offset_top = 212.002
+offset_right = 962.999
+offset_bottom = 301.002
 
-[node name="StageZone" type="HBoxContainer" parent="UI/Player2"]
-layout_mode = 0
-offset_left = 655.0
-offset_top = 87.9999
-offset_right = 736.0
-offset_bottom = 196.0
-
-[node name="TrashZone" type="HBoxContainer" parent="UI/Player2"]
-layout_mode = 0
-offset_left = 917.0
-offset_top = 91.0
-offset_right = 988.0
-offset_bottom = 193.0
-
-[node name="LeaderZone" type="HBoxContainer" parent="UI/Player2"]
+[node name="StageZone" type="HBoxContainer" parent="CanvasLayer/UI/Player2"]
 layout_mode = 0
 offset_left = 799.0
-offset_top = 97.0
-offset_right = 881.0
-offset_bottom = 203.0
+offset_top = 110.0
+offset_right = 914.0
+offset_bottom = 198.0
 
-[node name="Deck" type="HBoxContainer" parent="UI/Player2"]
+[node name="TrashZone" type="HBoxContainer" parent="CanvasLayer/UI/Player2"]
 layout_mode = 0
-offset_left = 914.0
-offset_top = 211.0
-offset_right = 998.0
-offset_bottom = 313.0
+offset_left = 991.0
+offset_top = 212.0
+offset_right = 1106.0
+offset_bottom = 300.0
+
+[node name="LeaderZone" type="HBoxContainer" parent="CanvasLayer/UI/Player2"]
+layout_mode = 0
+offset_left = 611.0
+offset_top = 106.0
+offset_right = 729.0
+offset_bottom = 201.0
+
+[node name="Deck" type="HBoxContainer" parent="CanvasLayer/UI/Player2"]
+layout_mode = 0
+offset_left = 993.0
+offset_top = 109.0
+offset_right = 1105.0
+offset_bottom = 201.0
 script = ExtResource("7_kk811")
 
-[node name="Win" type="Button" parent="UI/Player2"]
+[node name="Win" type="Button" parent="CanvasLayer/UI/Player2"]
 layout_mode = 0
-offset_left = 1151.0
-offset_top = 322.003
-offset_right = 1189.0
-offset_bottom = 353.003
+offset_left = 68.9993
+offset_top = 307.0
+offset_right = 106.999
+offset_bottom = 338.0
 rotation = -3.12362
 text = "Win"
 
-[node name="Lose" type="Button" parent="UI/Player2"]
+[node name="Lose" type="Button" parent="CanvasLayer/UI/Player2"]
 layout_mode = 0
-offset_left = 1093.0
-offset_top = 322.003
-offset_right = 1131.0
-offset_bottom = 353.003
+offset_left = 66.9994
+offset_top = 253.0
+offset_right = 110.999
+offset_bottom = 284.0
 rotation = -3.12362
 text = "Lose"
 
-[node name="CardHolder" type="Node" parent="."]
-
-[connection signal="mouse_entered" from="UI/Player1/Hand" to="UI/Player1/Hand" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/Player1/Hand" to="UI/Player1/Hand" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="UI/Player1/CardPlacement" to="UI/Player1/CardPlacement" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/Player1/CardPlacement" to="UI/Player1/CardPlacement" method="_on_mouse_exited"]
-[connection signal="pressed" from="UI/Player1/back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="UI/Player1/EndTurnButton" to="." method="_on_end_turn_button_pressed"]
-[connection signal="pressed" from="UI/Player1/StartTurnButton" to="." method="_on_start_turn_button_pressed"]
-[connection signal="pressed" from="UI/Player1/LoadDeckButton" to="UI/Player1" method="_on_pressed"]
-[connection signal="mouse_entered" from="UI/Player2/Hand" to="UI/Player2/Hand" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/Player2/Hand" to="UI/Player2/Hand" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="UI/Player2/CardPlacement" to="UI/Player2/CardPlacement" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/Player2/CardPlacement" to="UI/Player2/CardPlacement" method="_on_mouse_exited"]
-[connection signal="pressed" from="UI/Player2/Win" to="." method="_on_win_pressed"]
-[connection signal="pressed" from="UI/Player2/Lose" to="." method="_on_lose_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/UI/Player1/Hand" to="CanvasLayer/UI/Player1/Hand" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/UI/Player1/Hand" to="CanvasLayer/UI/Player1/Hand" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/UI/Player1/CardPlacement" to="CanvasLayer/UI/Player1/CardPlacement" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/UI/Player1/CardPlacement" to="CanvasLayer/UI/Player1/CardPlacement" method="_on_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/UI/Player1/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Player1/EndTurnButton" to="." method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Player1/StartTurnButton" to="." method="_on_start_turn_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Player1/LoadDeckButton" to="CanvasLayer/UI/Player1" method="_on_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/UI/Player2/Hand" to="CanvasLayer/UI/Player2/Hand" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/UI/Player2/Hand" to="CanvasLayer/UI/Player2/Hand" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/UI/Player2/CardPlacement" to="CanvasLayer/UI/Player2/CardPlacement" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/UI/Player2/CardPlacement" to="CanvasLayer/UI/Player2/CardPlacement" method="_on_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/UI/Player2/Win" to="." method="_on_win_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Player2/Lose" to="." method="_on_lose_pressed"]

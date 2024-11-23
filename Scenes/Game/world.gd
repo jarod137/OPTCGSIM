@@ -10,12 +10,12 @@ func _on_back_pressed() -> void:
 
 
 func _on_end_turn_button_pressed() -> void:
-	$UI/Player1/DonDeck.donDraw()
+	$CanvasLayer/UI/Player1/DonDeck.donDraw()
 
 
 func _on_start_turn_button_pressed() -> void:
 	if turncount == 0:
-		$UI/Player1/DonDeck.setUpDon()
+		$CanvasLayer/UI/Player1/DonDeck.setUpDon()
 	turncount += 1
 
 
