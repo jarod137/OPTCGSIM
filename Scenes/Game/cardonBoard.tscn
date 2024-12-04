@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3e05ns85uk4n"]
+[gd_scene load_steps=9 format=3 uid="uid://d3e05ns85uk4n"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/cardonBoard.gd" id="1_cn8kd"]
 [ext_resource type="Texture2D" uid="uid://sqh8rsguhuow" path="res://Assets/CardBacks/backcard7.png" id="2_5px4p"]
@@ -33,6 +33,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(52, 67)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardBacks:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_0gtgv"]
 resource_name = "Select"
@@ -50,11 +62,43 @@ tracks/0/keys = {
 "values": [Vector2(52, 67), Vector2(52, 20)]
 }
 
+[sub_resource type="Animation" id="Animation_3g4w5"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardBacks:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0001, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_03532"]
+resource_name = "untap"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardBacks:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0001, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.5708, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_blu37"]
 _data = {
 "DeSelect": SubResource("Animation_7k3b2"),
 "RESET": SubResource("Animation_7wupx"),
-"Select": SubResource("Animation_0gtgv")
+"Select": SubResource("Animation_0gtgv"),
+"tap": SubResource("Animation_3g4w5"),
+"untap": SubResource("Animation_03532")
 }
 
 [node name="CardonBoard" type="Container"]
@@ -72,3 +116,6 @@ texture = ExtResource("2_5px4p")
 libraries = {
 "": SubResource("AnimationLibrary_blu37")
 }
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -14,13 +14,6 @@ var isEvent = false
 func _ready():
 	startPosition = self.position
 
-func setActive():
-	$Anim.play("Active")
-	isRested = false
-
-func setRested():
-	$Anim.play("Rested")
-	isRested = true
 
 func _on_mouse_entered():
 	$Anim.play("Select")

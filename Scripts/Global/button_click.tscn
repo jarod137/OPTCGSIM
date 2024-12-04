@@ -4,3 +4,4 @@
 
 [node name="ButtonClick" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_7sach")
+volume_db = 19.81
