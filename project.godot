@@ -25,6 +25,7 @@ GlobalAudioStreamPlayer="*res://Scripts/Global/audio_stream_player.tscn"
 
 [display]
 
+window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
 
 [dotnet]

@@ -23,19 +23,6 @@ func _on_mouse_exited():
 	$Anim.play("DeSelect")
 	cardHighlighted = false
 
-func Battle():
-	# how I plan to implement battling
-	
-	#blockerStep()
-	#counterStep()
-	#if power < opponentPower:
-	#	pass
-	#else:
-	#	if isLeader:
-	#		takeLife()
-	#	else:
-	#		opponentCard.trash()
-	pass
 
 # how I am going to implement keyword handling when cards are linked to the deck file
 func keyword_check():
