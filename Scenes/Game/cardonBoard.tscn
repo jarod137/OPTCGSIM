@@ -102,6 +102,9 @@ _data = {
 }
 
 [node name="CardonBoard" type="Container"]
+light_mask = 512
+visibility_layer = 512
+z_index = 10
 custom_minimum_size = Vector2(105, 136)
 offset_right = 105.0
 offset_bottom = 136.0
