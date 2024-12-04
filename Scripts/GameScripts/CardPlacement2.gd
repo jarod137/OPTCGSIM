@@ -19,5 +19,5 @@ func placeCard():
 	var projectResolutionHeight = ProjectSettings.get_setting("display/window/size/viewport_height")
 	#add an if card is character, event, or stage here
 	count += 120
-	cardTemp.global_position = Vector2(projectResolution/2.75 + count, projectResolutionHeight/2 - 200) - self.position*2
+	cardTemp.global_position = Vector2(projectResolution/1.5 + count, projectResolutionHeight/2 - 350) - self.position*2
 	add_child(cardTemp)

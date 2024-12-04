@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://d3e05ns85uk4n"]
 
 [ext_resource type="Script" path="res://Scripts/GameScripts/cardonBoard.gd" id="1_cn8kd"]
-[ext_resource type="Texture2D" uid="uid://sqh8rsguhuow" path="res://Assets/CardBacks/backcard7.png" id="2_5px4p"]
+[ext_resource type="Texture2D" uid="uid://elv3rfhw0k8q" path="res://Assets/Cards/37.png" id="2_hgwmi"]
 
 [sub_resource type="Animation" id="Animation_7k3b2"]
 resource_name = "DeSelect"
@@ -113,7 +113,7 @@ script = ExtResource("1_cn8kd")
 [node name="CardBacks" type="Sprite2D" parent="."]
 position = Vector2(52, 67)
 scale = Vector2(0.134761, 0.122103)
-texture = ExtResource("2_5px4p")
+texture = ExtResource("2_hgwmi")
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 libraries = {
