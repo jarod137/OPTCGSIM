@@ -1,3 +1,7 @@
+# if (turn == 1) Don+1; else don+2;
+#don cannot be more than 10
+
+
 extends HBoxContainer
 
 @onready var card = preload("res://Scenes/Game/donCard.tscn")

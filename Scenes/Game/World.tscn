@@ -18,12 +18,14 @@ script = ExtResource("1_0xtuj")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Playmat" type="Sprite2D" parent="CanvasLayer"]
+z_index = -1
 position = Vector2(505.7, 174.039)
 rotation = -3.14159
 scale = Vector2(0.866314, 0.494121)
 texture = ExtResource("2_21sj1")
 
 [node name="Playmat2" type="Sprite2D" parent="CanvasLayer"]
+z_index = -2
 position = Vector2(521, 496.5)
 scale = Vector2(0.8908, 0.44687)
 texture = ExtResource("2_21sj1")
@@ -68,6 +70,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="CardPlacement" type="Control" parent="CanvasLayer/UI/Player1"]
+z_index = -1
 layout_mode = 3
 anchors_preset = 0
 offset_left = 235.0
@@ -215,6 +218,7 @@ offset_bottom = 104.0
 script = ExtResource("5_olwlw")
 
 [node name="DonDeck" type="HBoxContainer" parent="CanvasLayer/UI/Player2"]
+z_index = -1
 layout_mode = 0
 offset_left = 205.0
 offset_top = 209.0

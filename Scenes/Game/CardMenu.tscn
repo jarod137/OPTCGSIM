@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://7fncg1owwopl"]
+
+[ext_resource type="Script" path="res://Scenes/Game/card_menu.gd" id="1_652kf"]
+[ext_resource type="Theme" uid="uid://gmjysn315cso" path="res://Assets/Buttons/DefaultButton.tres" id="1_jk21c"]
+
+[node name="AttackMenu" type="PopupMenu"]
+visible = true
+unfocusable = true
+script = ExtResource("1_652kf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_jk21c")
+
+[node name="Attack" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Attack"
+
+[node name="Cancel" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
+[connection signal="pressed" from="VBoxContainer/Attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="VBoxContainer/Cancel" to="." method="_on_cancel_pressed"]

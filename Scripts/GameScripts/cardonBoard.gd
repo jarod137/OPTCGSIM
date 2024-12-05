@@ -1,11 +1,22 @@
 extends Container
 
+var _active = true
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _battle():
 	pass
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			print("Container clicked!")
+			if _active == true:
+				$Anim.play("tap")
+				_battle()
+				_active = false
+			else:
+				$Anim.play("untap")
+				_active = true
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			self.free()

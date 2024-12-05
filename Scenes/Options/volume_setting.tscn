@@ -52,7 +52,6 @@ text = "SFX Volume"
 
 [node name="sfx" parent="HBoxContainer/PanelContainer/VBoxContainer" instance=ExtResource("1_bnd44")]
 layout_mode = 2
-theme = ExtResource("3_w7o0h")
 bus_name = "sfx"
 
 [node name="Button" type="Button" parent="HBoxContainer/PanelContainer/VBoxContainer"]
