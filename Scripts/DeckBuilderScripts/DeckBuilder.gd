@@ -245,6 +245,7 @@ func _on_line_edit_text_submitted(new_text):
 	currentSearch = new_text
 	var min_index = current_page * cards_per_page
 	var max_index = min_index + cards_per_page
+	current_page = 0
 	populate_UI(min_index, max_index, currentSearch)
 
 func _on_load_button_pressed():

@@ -3,7 +3,7 @@ extends Control
 var deck = []
 
 var cardScene = preload("res://Scenes/Game/DeckContainer.tscn")
-@onready var popUpLoad = preload("res://Scenes/DeckBuilder/PopUpSave.tscn")
+@onready var popUpLoad = preload("res://Scenes/DeckBuilder/PopUpLoad.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,6 +25,8 @@ func load_deck(filename: String):
 		set_deck_container(card)
 		
 func set_leader_container(info):
+	print(info)
+	
 	var leader_container = self.get_node_or_null("LeaderZone")
 	if not leader_container:
 		print("Error: Leader container not found")
