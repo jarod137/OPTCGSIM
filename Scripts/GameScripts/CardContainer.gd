@@ -12,7 +12,8 @@ func _ready():
 	self.global_position.x = projectResolution/4
 	self.global_position.y = (projectResolutionHeight) - 60
 	startPosition = self.position
-	
+
+@rpc("unreliable") #attempt to send multiplayer signal
 func _on_mouse_entered():
 	var target_position = startPosition + Vector2(0, -100)
 	var tween = get_tree().create_tween()
@@ -20,7 +21,7 @@ func _on_mouse_entered():
 	tween.tween_property(self, "position", target_position, 0.2)
 	tween2.tween_property(self, "scale", Vector2(1.3,1.3), 0.2)
 
-
+@rpc("unreliable") #attempt to send multiplayer signal
 func _on_mouse_exited():
 	if !Game.cardSelected:
 		var tween = get_tree().create_tween()

@@ -15,10 +15,12 @@ func _ready():
 	startPosition = self.position
 
 
+@rpc("unreliable") #attempt to send multiplayer signal
 func _on_mouse_entered():
 	$Anim.play("Select")
 	cardHighlighted = true
 
+@rpc("unreliable") #attempt to send multiplayer signal
 func _on_mouse_exited():
 	$Anim.play("DeSelect")
 	cardHighlighted = false
@@ -37,6 +39,7 @@ func keyword_check():
 	else:
 		pass
 
+@rpc("unreliable") #attempt to send multiplayer signal
 func _on_gui_input(event):
 	if (event is InputEventMouseButton) and (event.button_index == 1):
 			if event.button_mask == 1:

@@ -7,12 +7,14 @@ const DEFAULT_IP = "localhost" #default localhost websocket
 @onready var port = $MarginContainer/VBoxContainer/port
 @onready var btn_host = $MarginContainer/VBoxContainer/HBoxContainer/btn_host
 @onready var btn_join = $MarginContainer/VBoxContainer/HBoxContainer/btn_join
+@onready var btn_dc = $MarginContainer/VBoxContainer/dc
 
 var peer = null
 
 # Called when the node enters the scene tree for the first time.
 #may not be needed idk
 func _ready() -> void:
+	
 	# Connect all the callbacks related to networking.
 	multiplayer.peer_connected.connect(_player_connected)
 	multiplayer.peer_disconnected.connect(_player_disconnected)
@@ -20,24 +22,31 @@ func _ready() -> void:
 	multiplayer.connection_failed.connect(_connected_fail)
 	multiplayer.server_disconnected.connect(_server_disconnected)
 
+@rpc("call_local","reliable")
 func _player_connected(_id):
 	if multiplayer.is_server():
 		print("Player 1 connected")
 	else:
 		print("Player 2 connected")
+		
+	#this is not the correct way to initialize the multiplayer game world
+	#as such, events communicated over the network don't affect anything
 	get_tree().change_scene_to_file("res://Scenes/Game/World.tscn")
 	#var sim = load("res://Scenes/Game/World.tscn").instantiate()
-	# Connect deferred so we can safely erase it from the callback.
+	 #Connect deferred so we can safely erase it from the callback.
 	#sim.game_finished.connect(_end_game, CONNECT_DEFERRED)
-
+#
 	#get_tree().get_root().add_child(sim)
-	hide()
+	#hide()
 	
 func _player_disconnected():
 	if multiplayer.is_server():
 		print("Client disconnected")
 	else:
 		print("Server disconnected")
+		
+	#disconnect in turn
+	multiplayer.multiplayer_peer.close()
 
 func _connected_ok():
 	print("it worked!!!")
@@ -79,9 +88,13 @@ func _on_btn_host_pressed() -> void:
 	btn_host.set_pressed_no_signal(true)
 	btn_join.set_disabled(true)
 	btn_host.set_pressed_no_signal(true)
+	#show restart server button
+	btn_dc.set_disabled(false)
+	btn_dc.set_pressed_no_signal(false)
+	btn_dc.show()
 	print("Waiting for player on port "+str(DEFAULT_PORT))
 
-
+#create websocket peer
 func _on_btn_join_pressed() -> void:
 	var ip = address.get_text()
 	if not ip.is_valid_ip_address() and not ip == "localhost":
@@ -91,3 +104,17 @@ func _on_btn_join_pressed() -> void:
 	peer.create_client("ws://"+ip+":"+str(DEFAULT_PORT))
 	multiplayer.set_multiplayer_peer(peer)
 	print("Connecting to "+"ws://"+ip+":"+str(DEFAULT_PORT))
+
+#restart server button
+func _on_dc_pressed() -> void:
+	#shut off server
+	if multiplayer.is_server():
+		multiplayer.multiplayer_peer.close()
+		#then enable buttons to connect
+		btn_host.set_disabled(false)
+		btn_host.set_pressed_no_signal(false)
+		btn_join.set_disabled(false)
+		btn_host.set_pressed_no_signal(false)
+	else:
+		print("Couldn't disconnect...")
+	

@@ -61,6 +61,12 @@ size_flags_horizontal = 3
 theme = ExtResource("2_3kq2o")
 text = "Join"
 
+[node name="dc" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_3kq2o")
+text = "Shut Off/Restart Server
+"
+
 [node name="back" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_3kq2o")
@@ -69,4 +75,6 @@ text = "Back
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/btn_host" to="." method="_on_btn_host_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/btn_join" to="." method="_on_btn_join_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/dc" to="." method="_on_dc_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/dc" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/back" to="." method="_on_back_pressed"]
