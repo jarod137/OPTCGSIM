@@ -134,6 +134,7 @@ anchor_bottom = 0.97205
 metadata/_edit_use_anchors_ = true
 
 [node name="back" type="Button" parent="CanvasLayer/UI/Player1"]
+visible = false
 layout_mode = 0
 offset_left = -2.0
 offset_top = 284.0
@@ -269,6 +270,7 @@ offset_bottom = 201.0
 script = ExtResource("7_kk811")
 
 [node name="Win" type="Button" parent="CanvasLayer/UI/Player2"]
+visible = false
 layout_mode = 0
 offset_left = 68.9993
 offset_top = 307.0
@@ -278,6 +280,7 @@ rotation = -3.12362
 text = "Win"
 
 [node name="Lose" type="Button" parent="CanvasLayer/UI/Player2"]
+visible = false
 layout_mode = 0
 offset_left = 66.9994
 offset_top = 253.0
@@ -285,6 +288,14 @@ offset_right = 110.999
 offset_bottom = 284.0
 rotation = -3.12362
 text = "Lose"
+
+[node name="CardView" type="Control" parent="CanvasLayer/UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 982.0
+offset_top = 122.0
+offset_right = 1146.0
+offset_bottom = 335.0
 
 [connection signal="mouse_entered" from="CanvasLayer/UI/Player1/Hand" to="CanvasLayer/UI/Player1/Hand" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/UI/Player1/Hand" to="CanvasLayer/UI/Player1/Hand" method="_on_mouse_exited"]
