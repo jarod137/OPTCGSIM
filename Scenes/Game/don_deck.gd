@@ -30,7 +30,6 @@ func setRested():
 	$Anim.play("Rested")
 	isRested = true
 
-
 func donDraw():
 	# Instantiates new card and positions at specified location on screen. 
 	var cardTemp = card.instantiate()

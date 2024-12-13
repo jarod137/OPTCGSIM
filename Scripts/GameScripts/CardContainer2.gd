@@ -1,8 +1,11 @@
-
+# CardContainer2.gd
+# Manages the container for cards, including positioning, scaling, and multiplayer interaction.
 
 extends HBoxContainer
 
+# Initial position of the container
 var startPosition
+# Maximum number of cards allowed in the container
 var maxCardsAllowed = 5
 
 func _ready():
