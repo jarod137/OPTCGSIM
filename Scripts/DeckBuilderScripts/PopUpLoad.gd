@@ -1,3 +1,7 @@
+
+# PopUpLoad.gd
+# A simple popup view that extends Window class to prompt user with a list of files located at the "res://Assets/SaveData/" dir.
+
 extends Window
 
 var pickedFile = ""
@@ -16,7 +20,8 @@ func _process(delta: float) -> void:
 
 func _on_close_requested() -> void:
 	self.hide()
-	
+
+# Fetches all files are specified dir and appends them to files arr 
 func get_files():
 	var path = "res://Assets/SaveData/"
 	var dir = DirAccess.open(path)
@@ -32,7 +37,8 @@ func get_files():
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
-	
+
+# Populates UI to reflect all located files and connect a button pressed listener 	to set_text()
 func add_files_to_list():
 	var vbox = get_node_or_null("VBoxContainer")
 	if not vbox:
@@ -45,7 +51,8 @@ func add_files_to_list():
 		button_node.text = label
 		button_node.pressed.connect(set_text.bind(label))
 		vbox.add_child(button_node)
-	
+
+# Sets the global text var to the specified string value if the passed value is not ""	
 func set_text(text: String):
 	if text == "":
 		print("Error: text is somehow empty")
@@ -61,6 +68,7 @@ func set_text(text: String):
 func _on_cancel_button_pressed() -> void:
 	self.hide()
 
+# emits a single that a selection was made
 func _on_done_button_pressed() -> void:
 	emit_signal("value_selected", line_edit.text)
 	self.hide()

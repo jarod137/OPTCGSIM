@@ -11,7 +11,6 @@ func _on_back_pressed() -> void:
 
 func _on_end_turn_button_pressed() -> void:
 	# Need signal to update turn to allow other play to do thing
-	
 	# Disables the end turn button when it is not their turn
 	$CanvasLayer/UI/Player1/StartTurnButton.disabled = true
 	pass
