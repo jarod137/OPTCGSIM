@@ -1,3 +1,7 @@
+
+# Game_Deck.gd
+# Is responsible for updating the main game area UI with user selections. 
+
 extends Control
 
 var deck = []
@@ -13,6 +17,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+# loads deck from passed filename. Check for empty string is performed in called class
 func load_deck(filename: String):
 	var game_deck = Player_Deck.new()
 	
@@ -23,15 +28,15 @@ func load_deck(filename: String):
 	
 	for card in deck:
 		set_deck_container(card)
-		
-func set_leader_container(info):
-	print(info)
 	
+# Sets leader container of the UI to reflect user selection. 	
+func set_leader_container(info):	
 	var leader_container = self.get_node_or_null("LeaderZone")
 	if not leader_container:
 		print("Error: Leader container not found")
 		return
 	
+	# Creates new card instance
 	var card_instance = cardScene.instantiate()
 	
 	var btn_node = card_instance.get_node_or_null("TextureButton")
@@ -43,12 +48,14 @@ func set_leader_container(info):
 	if img_path == "":
 		print("Error: imgPath is empty")
 		return
-		
+	
+	# Sets texture
 	var texture = load(img_path) as Texture2D
 	btn_node.texture_normal = texture
 	
 	leader_container.add_child(card_instance)
 	
+# Sets the deck container to contain the card instance using the info arg. 
 func set_deck_container(info):
 	var deck_container = self.get_node_or_null("Deck")
 	if not deck_container:
@@ -65,13 +72,15 @@ func set_deck_container(info):
 	var img_path = "res://Assets/CardBacks/backcard7.png"
 	var texture = load(img_path) as Texture2D
 	btn_node.texture_normal = texture
-	btn_node.pressed.connect(_on_texture_button_pressed.bind(info))
+	btn_node.pressed.connect(_on_texture_button_pressed.bind(info)) # Attaches button pressed listener to on_texture_button_pressed()
 	
 	deck_container.add_child(card_instance)
-	
+
+# Debugging print function
 func _on_texture_button_pressed(info):
 	print(info)
 
+# displays the load popup view. 
 func _on_pressed() -> void:
 	var popup_instance = popUpLoad.instantiate()
 	add_child(popup_instance)

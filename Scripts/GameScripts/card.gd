@@ -1,8 +1,12 @@
-extends Container
+# card.gd
+# This class is responsible for the actual card interactions that are to occur. This includes things like animations and attempts to broadcast it for multiplayer.
 
+extends Container
 
 @onready var card = preload("res://Scenes/Game/cardHolder.tscn")
 var startPosition
+
+# Series of flags to indicate cards current state. 
 var cardHighlighted = false
 var isRested = false
 var isDon = false

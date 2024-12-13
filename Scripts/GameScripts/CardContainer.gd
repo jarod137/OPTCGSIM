@@ -1,6 +1,12 @@
+
+# CardContainer.gd
+# Manages the container for cards, including positioning, scaling, and multiplayer interaction.
+
 extends HBoxContainer
 
+# Initial position of the container
 var startPosition
+# Maximum number of cards allowed in the container
 var maxCardsAllowed = 5
 
 func _ready():
@@ -12,6 +18,7 @@ func _ready():
 	self.global_position.y = (projectResolutionHeight) - 60
 	startPosition = self.position
 
+# Plays an animation when the card is hovered. 
 @rpc("unreliable") #attempt to send multiplayer signal
 func _on_mouse_entered():
 	var target_position = startPosition + Vector2(0, -100)
@@ -20,6 +27,7 @@ func _on_mouse_entered():
 	tween.tween_property(self, "position", target_position, 0.2)
 	tween2.tween_property(self, "scale", Vector2(1.3,1.3), 0.2)
 
+# Reverts the animation that was played when the card was hovered. 
 @rpc("unreliable") #attempt to send multiplayer signal
 func _on_mouse_exited():
 	if !Game.cardSelected:

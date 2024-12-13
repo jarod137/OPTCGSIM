@@ -12,7 +12,6 @@ const DEFAULT_IP = "localhost" #default localhost websocket
 var peer = null
 
 # Called when the node enters the scene tree for the first time.
-#may not be needed idk
 func _ready() -> void:
 	
 	# Connect all the callbacks related to networking.
@@ -70,7 +69,6 @@ func _end_game():
 	multiplayer.set_multiplayer_peer(null) # Remove peer.
 	btn_host.set_disabled(false)
 	btn_join.set_disabled(false)
-
 
 func _on_back_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Menu/menu.tscn")
